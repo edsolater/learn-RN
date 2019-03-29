@@ -1,5 +1,9 @@
 {
   "main": "node_modules/expo/AppEntry.js",
+  "inCMD":{
+    "desktop": "set REACT_NAtIVE_PACKAGER_HOSTNAME=192.168.31.101",
+    "surface Pro":"set REACT_NAtIVE_PACKAGER_HOSTNAME=192.168.31.228"
+  },
   "scripts": {
     "start": "expo start",
     "android": "expo start --android",
