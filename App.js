@@ -1,19 +1,18 @@
 import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { Provider as ReduxProvider } from 'react-redux'
+import { Provider as PaperProvider } from 'react-native-paper'
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center'
-  }
-})
+import store from './src/data/store'
+import Index from './src/components'
 
-export default function App() {
+const App = () => {
   return (
-    <View style={styles.container}>
-      <Text>hello !! Open up App.js to start working on your app!</Text>
-    </View>
+    <ReduxProvider store={store}>
+      <PaperProvider>
+        <Index />
+      </PaperProvider>
+    </ReduxProvider>
   )
 }
+
+export default App

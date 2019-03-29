@@ -1,8 +1,8 @@
 {
   "main": "node_modules/expo/AppEntry.js",
-  "inCMD":{
+  "inCMD": {
     "desktop": "set REACT_NAtIVE_PACKAGER_HOSTNAME=192.168.31.101",
-    "surface Pro":"set REACT_NAtIVE_PACKAGER_HOSTNAME=192.168.31.228"
+    "surface Pro": "set REACT_NAtIVE_PACKAGER_HOSTNAME=192.168.31.228"
   },
   "scripts": {
     "start": "expo start",
@@ -13,7 +13,11 @@
   "dependencies": {
     "expo": "^32.0.0",
     "react": "16.5.0",
-    "react-native": "https://github.com/expo/react-native/archive/sdk-32.0.0.tar.gz"
+    "react-native": "https://github.com/expo/react-native/archive/sdk-32.0.0.tar.gz",
+    "react-native-paper": "^2.15.0",
+    "react-redux": "^6.0.1",
+    "redux": "^4.0.1",
+    "styled-components": "^4.2.0"
   },
   "devDependencies": {
     "babel-preset-expo": "^5.0.0"
