@@ -2,17 +2,15 @@ import React from 'react'
 import { Provider as ReduxProvider } from 'react-redux'
 import { Provider as PaperProvider } from 'react-native-paper'
 
-import store from './src/data/store'
-import Index from './src/components'
+import store from './src/redux/store'
+import Screens from './src'
 
-const App = () => {
-  return (
-    <ReduxProvider store={store}>
-      <PaperProvider>
-        <Index />
-      </PaperProvider>
-    </ReduxProvider>
-  )
-}
+const App = () => (
+  <ReduxProvider store={store}>
+    <PaperProvider>
+      <Screens />
+    </PaperProvider>
+  </ReduxProvider>
+)
 
 export default App
