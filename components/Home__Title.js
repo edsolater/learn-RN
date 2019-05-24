@@ -35,9 +35,10 @@ export default function This({ navigation }) {
   return (
     <View style={style.This}>
       <Text>{text.title}</Text>
-      <Text>{haha}</Text>
+      <Text>haha</Text>
       <Button
         onPress={() => dispatch({ type: 'goto', payload: { navigation } })}
+        title="button"
       />
     </View>
   )
