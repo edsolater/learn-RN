@@ -1,5 +1,5 @@
 import { createStackNavigator, createAppContainer } from 'react-navigation'
-import Home from './Home'
+import Home from '../screens/首页'
 
 const stackNavigator = createStackNavigator(
   {
@@ -9,7 +9,7 @@ const stackNavigator = createStackNavigator(
   {
     defaultNavigationOptions: {
       headerTintColor: '#333',
-      headerStyle: { backgroundColor: '#eff' }
+      headerStyle: { display: 'none'}
     }
   }
 )

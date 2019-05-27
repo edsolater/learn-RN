@@ -1,9 +1,9 @@
 {
   "devToolsPort": 19002,
   "expoServerPort": 19000,
-  "packagerPort": null,
-  "packagerPid": null,
+  "packagerPort": 19001,
+  "packagerPid": 18336,
   "expoServerNgrokUrl": "https://cz-6tb.anonymous.learn-rn.exp.direct",
   "packagerNgrokUrl": "https://packager.cz-6tb.anonymous.learn-rn.exp.direct",
-  "ngrokPid": 297380
+  "ngrokPid": 12432
 }

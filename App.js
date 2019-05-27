@@ -3,12 +3,12 @@ import { Provider as ReduxProvider } from 'react-redux'
 import { Provider as PaperProvider } from 'react-native-paper'
 
 import store from './redux/store'
-import Screens from './components/AppScreens'
+import AppContainer from './navigators/AppContainer'
 
 const App = () => (
   <ReduxProvider store={store}>
     <PaperProvider>
-      <Screens />
+      <AppContainer />
     </PaperProvider>
   </ReduxProvider>
 )
