@@ -1,6 +1,6 @@
 export {default as 商品分类} from './商品分类'
 export {default as 商品列表} from './商品列表'
-export {default as 商品详情} from './商品详情'
+export {default as 商品详情页} from './商品详情页'
 export {default as 成就} from './成就'
 export {default as 我} from './我'
 export {default as 收藏夹} from './收藏夹'

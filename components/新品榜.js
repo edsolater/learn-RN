@@ -1,12 +1,20 @@
 import React from 'react'
-import { StyleSheet, View } from 'react-native'
+import { StyleSheet, ScrollView, View } from 'react-native'
 
-import 标语 from './首页/标语'
+//---内容设定---//
+const goods = [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}]
+
+//---组件设定---//
+import 商品卡片 from './basic/商品卡片'
 function This({ navigation }) {
   return (
-    <View style={style.This}>
-      <标语 navigation={navigation} />
-    </View>
+    <ScrollView style={style.This}>
+      <View>
+        {goods.map(({}, index) => (
+          <商品卡片 key={`${index}`} />
+        ))}
+      </View>
+    </ScrollView>
   )
 }
 This.navigationOptions = function({ navigation, navigationOptions }) {
@@ -22,7 +30,6 @@ export default This
 
 const style = StyleSheet.create({
   This: {
-    flex: 1,
     backgroundColor: 'gold' //
   }
 })

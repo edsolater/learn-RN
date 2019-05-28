@@ -1,11 +1,11 @@
 import { StyleSheet, View } from 'react-native'
 import React from 'react'
 
-import 标语 from './首页/标语'
+import 底部导航栏 from './购物车__底部导航栏'
 function This({ navigation }) {
   return (
     <View style={style.This}>
-      <标语 navigation={navigation} />
+      <底部导航栏 navigation={navigation} />
     </View>
   )
 }

@@ -3,11 +3,11 @@ import { StyleSheet, View, TouchableHighlight, Image } from 'react-native'
 
 //---内容设定---//
 const images = [
-  { source: require('../assets/类.png'), name: '类', destination: '商品分类' },
-  { source: require('../assets/新.png'), name: '新', destination: '新品榜' },
-  { source: require('../assets/热.png'), name: '热', destination: '热销榜' },
-  { source: require('../assets/飙.png'), name: '飙', destination: '飙升榜' },
-  { source: require('../assets/更.png'), name: '更', destination: '更多' }
+  { source: require('../assets/images/类.png'), name: '类', destination: '商品分类' },
+  { source: require('../assets/images/新.png'), name: '新', destination: '新品榜' },
+  { source: require('../assets/images/热.png'), name: '热', destination: '热销榜' },
+  { source: require('../assets/images/飙.png'), name: '飙', destination: '飙升榜' },
+  { source: require('../assets/images/更.png'), name: '更', destination: '更多' }
 ]
 
 //---组件设定---//
