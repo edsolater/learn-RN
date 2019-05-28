@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="40" height="41" viewBox="0 0 40 41">
+  <defs>
+    <clipPath id="clip-path">
+      <rect width="40" height="41" fill="none"/>
+    </clipPath>
+  </defs>
+  <g id="导肮按钮" clip-path="url(#clip-path)">
+    <circle id="椭圆_1" data-name="椭圆 1" cx="20" cy="20" r="20" transform="translate(0 1)" fill="#fff346"/>
+    <text id="类" transform="translate(7 30)" fill="#333" font-size="26" font-family="SourceHanSansSC-Medium, Source Han Sans SC" font-weight="500"><tspan x="0" y="0">类</tspan></text>
+  </g>
+</svg>

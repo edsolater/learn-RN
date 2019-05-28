@@ -1,7 +1,7 @@
-import { StyleSheet, View } from 'react-native'
 import React from 'react'
+import { StyleSheet, View } from 'react-native'
 
-import 标语 from '../components/首页/标语'
+import 标语 from './首页/标语'
 function This({ navigation }) {
   return (
     <View style={style.This}>
