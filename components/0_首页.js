@@ -4,10 +4,10 @@ import { StyleSheet, ScrollView, View, Image } from 'react-native'
 //---固定内容---//
 
 //---组件设定---//
-import 搜索栏 from './首页__搜索栏'
-import Banner from './首页__banner'
-import 金刚区 from './首页__金刚区'
-import 底部导航栏 from './首页__底部导航栏'
+import 搜索栏 from './0_首页——搜索栏'
+import Banner from './0_首页——banner'
+import 金刚区 from './0_首页——金刚区'
+import 底部导航栏 from './0_首页——底部导航栏'
 import 商品卡片 from './basic/商品卡片'
 
 function This({ navigation }) {
@@ -20,7 +20,6 @@ function This({ navigation }) {
         <商品卡片 navigation={navigation} />
       </ScrollView>
       <底部导航栏 navigation={navigation} />
-      <Image style={{resizeMode}}/>
     </View>
   )
 }

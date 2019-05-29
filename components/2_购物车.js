@@ -1,12 +1,11 @@
-import React from 'react'
 import { StyleSheet, View } from 'react-native'
+import React from 'react'
 
-//---组件--//
-import 标语 from './首页/标语'
+import 底部导航栏 from './2_购物车__底部导航栏'
 function This({ navigation }) {
   return (
     <View style={style.This}>
-      <标语 navigation={navigation} />
+      <底部导航栏 navigation={navigation} />
     </View>
   )
 }
@@ -21,7 +20,6 @@ This.navigationOptions = function({ navigation, navigationOptions }) {
 }
 export default This
 
-//--样式--//
 const style = StyleSheet.create({
   This: {
     flex: 1,
