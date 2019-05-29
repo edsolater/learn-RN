@@ -1,17 +1,25 @@
 import React from 'react'
-import { StyleSheet, View } from 'react-native'
+import { StyleSheet, ScrollView, View } from 'react-native'
 
 import 底部导航栏 from './我__底部导航栏'
-function This({ navigation }) {
+import 用户信息 from './我__用户信息'
+import 收藏夹 from './我__收藏夹'
+import 物流信息 from './我__物流信息'
+function This({ navigation, user = {} }) {
   return (
     <View style={style.This}>
+      <ScrollView style={{flex:1, height:60* 8}}>
+        <用户信息 navigation={navigation} user={user} />
+        <收藏夹 navigation={navigation} user={user} />
+        <物流信息 navigation={navigation} user={user} />
+      </ScrollView>
       <底部导航栏 navigation={navigation} />
     </View>
   )
 }
 This.navigationOptions = function({ navigation, navigationOptions }) {
   return {
-    title: navigation.getParam('title', '') + 'haha'
+    title: '我'
     // headerStyle: {
     //   backgroundColor: navigationOptions.headerTintColor
     // },
@@ -23,6 +31,7 @@ export default This
 const style = StyleSheet.create({
   This: {
     flex: 1,
-    backgroundColor: 'gold' //
+    height: 70 * 8,
+    backgroundColor: 'gold', //color
   }
 })

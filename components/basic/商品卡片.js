@@ -1,7 +1,7 @@
 import React from 'react'
 import { StyleSheet, View, Text, TouchableHighlight, Image } from 'react-native'
 
-//---内容设定---//
+//---固定内容---//
 
 //---组件设定---//
 // TODO:现在只是能用，但跟设定排列顺序并不一致
@@ -13,12 +13,10 @@ export default function This({
 }) {
   return (
     <View style={style.This}>
-      <TouchableHighlight>
-        <Image
-          onPress={() => navigation.navigate('商品详情', { id })}
-          source={imageSource}
-          style={style.Image}
-        />
+      <TouchableHighlight
+        onPress={() => navigation.navigate('商品详情', { id })}
+      >
+        <Image source={imageSource} style={style.Image} />
       </TouchableHighlight>
       <Text style={style.Text}>{name}</Text>
     </View>

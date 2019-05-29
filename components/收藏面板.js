@@ -1,7 +1,7 @@
 import React from 'react'
 import { StyleSheet, View } from 'react-native'
 
-//---组件--//
+//---组件设定---//
 import 标语 from './首页/标语'
 function This({ navigation }) {
   return (
@@ -21,7 +21,6 @@ This.navigationOptions = function({ navigation, navigationOptions }) {
 }
 export default This
 
-//--样式--//
 const style = StyleSheet.create({
   This: {
     flex: 1,

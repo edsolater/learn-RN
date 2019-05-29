@@ -1,7 +1,7 @@
 import React from 'react'
 import { StyleSheet, View, TouchableHighlight, Image } from 'react-native'
 
-//---内容设定---//
+//---固定内容---//
 const images = [
   { source: require('../assets/images/类.png'), name: '类', destination: '商品分类' },
   { source: require('../assets/images/新.png'), name: '新', destination: '新品榜' },

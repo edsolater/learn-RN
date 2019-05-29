@@ -1,7 +1,7 @@
 import React from 'react'
 import { StyleSheet, View,  Text } from 'react-native'
 
-//---内容设定---//
+//---固定内容---//
 
 //---组件设定---//
 // TODO:现在只是能用，但跟设定排列顺序并不一致

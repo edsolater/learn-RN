@@ -1,10 +1,10 @@
 import { createStackNavigator, createAppContainer } from 'react-navigation'
-import * as screens from '../components'
+import * as screens from '../components/screens'
 
 const stackNavigator = createStackNavigator(
   screens,
   {
-    initialRouteName: '首页',
+    initialRouteName: '我',
     defaultNavigationOptions: {
       headerTintColor: '#333',
       // headerStyle: { display: 'none'}

@@ -1,7 +1,7 @@
 import React from 'react'
 import { StyleSheet, ScrollView, View } from 'react-native'
 
-//---内容设定---//
+//---固定内容---//
 const goods = [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}]
 
 //---组件设定---//

@@ -1,7 +1,7 @@
 import React from 'react'
-import { StyleSheet, ScrollView, View } from 'react-native'
+import { StyleSheet, ScrollView, View, Image } from 'react-native'
 
-//---内容设定---//
+//---固定内容---//
 
 //---组件设定---//
 import 搜索栏 from './首页__搜索栏'
@@ -13,13 +13,14 @@ import 商品卡片 from './basic/商品卡片'
 function This({ navigation }) {
   return (
     <View>
-      <ScrollView style={{ position: 'a' }} style={style.This}>
+      <ScrollView style={style.This}>
         <搜索栏 navigation={navigation} />
         <Banner navigation={navigation} />
         <金刚区 navigation={navigation} />
         <商品卡片 navigation={navigation} />
       </ScrollView>
       <底部导航栏 navigation={navigation} />
+      <Image style={{resizeMode}}/>
     </View>
   )
 }
@@ -36,7 +37,7 @@ export default This
 
 const style = StyleSheet.create({
   This: {
-    marginBottom: 9*8,
+    marginBottom: 9 * 8,
     backgroundColor: 'hsl(229, 20%, 20%)' //
   }
 })

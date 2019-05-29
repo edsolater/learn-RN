@@ -1,7 +1,7 @@
 import React from 'react'
 import { StyleSheet, View, TouchableHighlight, Image, Text } from 'react-native'
 
-//---内容设定---//
+//---固定内容---//
 const images = [
   { source: require('../assets/images/跳转：首页.png'),   name: '首页', destination: '首页' },
   { source: require('../assets/images/跳转：购物车.png'), name: '购物车', destination: '购物车' },
@@ -33,7 +33,8 @@ const style = StyleSheet.create({
     flexDirection:'row',
     justifyContent: 'space-around',
     alignItems: 'center', 
-    backgroundColor: 'white',//
+    backgroundColor: 'white',//color
+    elevation:24
   },
   Image: {
     width: 30,
