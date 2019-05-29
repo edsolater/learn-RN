@@ -8,7 +8,12 @@ import 物流信息 from './我__物流信息'
 function This({ navigation, user = {} }) {
   return (
     <View style={style.This}>
-      <ScrollView style={{flex:1, height:60* 8}}>
+      <ScrollView
+        style={style.ScrollView}
+        contentContainerStyle={{
+          flex:1
+        }}
+      >
         <用户信息 navigation={navigation} user={user} />
         <收藏夹 navigation={navigation} user={user} />
         <物流信息 navigation={navigation} user={user} />
@@ -31,7 +36,9 @@ export default This
 const style = StyleSheet.create({
   This: {
     flex: 1,
-    height: 70 * 8,
-    backgroundColor: 'gold', //color
+    backgroundColor: 'yellow' //color
+  },
+  ScrollView: {
+    marginBottom: 9 * 8
   }
 })

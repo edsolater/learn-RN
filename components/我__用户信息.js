@@ -38,7 +38,11 @@ export default This
 
 const style = StyleSheet.create({
   This: {
+    flex:1,
     flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems:'center',
+    marginBottom: 1 * 8,
     elevation: 6, //阴影反向竟然是向上的，不知道该怎么调？
     // background color must be set
     backgroundColor: 'white' // color
