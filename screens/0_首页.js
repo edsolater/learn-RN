@@ -8,7 +8,7 @@ import 搜索栏 from './0_首页——搜索栏'
 import Banner from './0_首页——banner'
 import 金刚区 from './0_首页——金刚区'
 import 底部导航栏 from './0_首页——底部导航栏'
-import 商品卡片 from './basic/商品卡片'
+import 商品卡片 from '../components/2_商品卡片'
 
 function This({ navigation }) {
   return (

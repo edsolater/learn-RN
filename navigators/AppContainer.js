@@ -1,5 +1,5 @@
 import { createStackNavigator, createAppContainer } from 'react-navigation'
-import * as screens from '../components/screens'
+import * as screens from '../screens'
 
 const stackNavigator = createStackNavigator(
   screens,

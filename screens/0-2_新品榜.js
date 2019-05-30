@@ -5,7 +5,7 @@ import { StyleSheet, ScrollView, View } from 'react-native'
 const goods = [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}]
 
 //---组件设定---//
-import 商品卡片 from './basic/商品卡片'
+import 商品卡片 from '../components/2_商品卡片'
 function This({ navigation }) {
   return (
     <ScrollView style={style.This}>

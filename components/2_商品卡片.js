@@ -8,7 +8,7 @@ import { StyleSheet, View, Text, TouchableHighlight, Image } from 'react-native'
 export default function This({
   navigation,
   id = '0000',
-  imageSource = require('../../assets/images/商品图片.png'),
+  imageSource = require('../assets/images/商品图片.png'),
   name = '缺省商品'
 }) {
   return (
