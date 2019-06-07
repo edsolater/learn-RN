@@ -3,9 +3,21 @@ import { StyleSheet, View, TouchableHighlight, Image, Text } from 'react-native'
 
 //---固定内容---//
 const images = [
-  { source: require('../assets/images/跳转：首页.png'),   name: '首页', destination: '首页' },
-  { source: require('../assets/images/跳转：购物车.png'), name: '购物车', destination: '购物车' },
-  { source: require('../assets/images/跳转：我.png'),     name: '我', destination: '我' },
+  {
+    source: require('../../assets/images/跳转：首页.png'),
+    name: '首页',
+    destination: '首页'
+  },
+  {
+    source: require('../../assets/images/跳转：购物车.png'),
+    name: '购物车',
+    destination: '购物车'
+  },
+  {
+    source: require('../../assets/images/跳转：我.png'),
+    name: '我',
+    destination: '我'
+  }
 ]
 //---组件设定---//
 // TODO:现在只是能用，但跟设定的排序方向并不一致
@@ -25,16 +37,16 @@ export default function This({ navigation }) {
 }
 const style = StyleSheet.create({
   This: {
-    width: "100%", 
-    height:9*8,
-    position:'absolute',
-    bottom:0,
-    zIndex:24,
-    flexDirection:'row',
+    width: '100%',
+    height: 9 * 8,
+    position: 'absolute',
+    bottom: 0,
+    zIndex: 24,
+    flexDirection: 'row',
     justifyContent: 'space-around',
-    alignItems: 'center', 
-    backgroundColor: 'white',//color
-    elevation:24
+    alignItems: 'center',
+    backgroundColor: '#ccc', //color
+    elevation: 24
   },
   Image: {
     width: 30,

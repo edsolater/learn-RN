@@ -2,7 +2,7 @@ import React from 'react'
 import { StyleSheet, View } from 'react-native'
 
 //---组件--//
-import 标语 from './首页/标语'
+import 标语 from './遗留糟粕/标语'
 function This({ navigation }) {
   return (
     <View style={style.This}>

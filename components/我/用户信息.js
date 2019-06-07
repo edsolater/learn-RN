@@ -8,9 +8,9 @@ function This({
   navigation,
   user: {
     ip = '000',
-    avatar = require('../assets/images/默认头像.png'),
-    integration = require('../assets/images/积分信息.png'),
-    badges = require('../assets/images/成就信息.png')
+    avatar = require('../../assets/images/默认头像.png'),
+    integration = require('../../assets/images/积分信息.png'),
+    badges = require('../../assets/images/成就信息.png')
   }
 }) {
   return (

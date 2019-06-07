@@ -7,9 +7,9 @@ import { StyleSheet, TouchableHighlight, View, Image, Text } from 'react-native'
 function This({ navigation, user = {} }) {
   return (
     <View style={style.This}>
-      <Image source={require('../assets/images/收藏夹.png')} />
+      <Image source={require('../../assets/images/收藏夹.png')} />
       <TouchableHighlight onPress={() => navigation.navigate('收藏面板')}>
-        <Image source={require('../assets/images/省略号.png')} />
+        <Image source={require('../../assets/images/省略号.png')} />
       </TouchableHighlight>
     </View>
   )

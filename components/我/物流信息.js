@@ -7,9 +7,9 @@ import { StyleSheet, TouchableHighlight, View, Image, Text } from 'react-native'
 function This({ navigation, user = {} }) {
   return (
     <View style={style.This}>
-      <Image source={require('../assets/images/物流信息.png')} />
+      <Image source={require('../../assets/images/物流信息.png')} />
       <TouchableHighlight onPress={() => navigation.navigate('物流面板')}>
-        <Image source={require('../assets/images/省略号.png')} />
+        <Image source={require('../../assets/images/省略号.png')} />
       </TouchableHighlight>
     </View>
   )

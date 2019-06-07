@@ -1,10 +1,10 @@
 import React from 'react'
 import { StyleSheet, ScrollView, View } from 'react-native'
 
-import 底部导航栏 from './1_我——底部导航栏'
-import 用户信息 from './1_我——用户信息'
-import 收藏夹 from './1_我——收藏夹'
-import 物流信息 from './1_我——物流信息'
+import 底部导航栏 from '../components/我/底部导航栏'
+import 用户信息 from '../components/我/用户信息'
+import 收藏夹 from '../components/我/收藏夹'
+import 物流信息 from '../components/我/物流信息'
 function This({ navigation, user = {} }) {
   return (
     <View style={style.This}>
