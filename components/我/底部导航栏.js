@@ -1,1 +1,1 @@
-export {default} from '../首页/底部导航栏'
+export {default} from '../底部导航栏'

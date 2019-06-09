@@ -1,13 +1,24 @@
 import React from 'react'
 import { StyleSheet, ScrollView, View } from 'react-native'
-
 import 底部导航栏 from '../components/我/底部导航栏'
 import 用户信息 from '../components/我/用户信息'
 import 收藏夹 from '../components/我/收藏夹'
 import 物流信息 from '../components/我/物流信息'
-function This({ navigation, user = {} }) {
+
+  const style = StyleSheet.create({
+    box: {
+      flex: 1,
+      backgroundColor: 'yellow' //color
+    },
+    ScrollView: {
+      marginBottom: 9 * 8
+    }
+  })
+
+
+function Component({ navigation, user = {} }) {
   return (
-    <View style={style.This}>
+    <View style={style.box}>
       <ScrollView
         style={style.ScrollView}
         contentContainerStyle={{
@@ -22,7 +33,7 @@ function This({ navigation, user = {} }) {
     </View>
   )
 }
-This.navigationOptions = function({ navigation, navigationOptions }) {
+Component.navigationOptions = function({ navigation, navigationOptions }) {
   return {
     title: '我'
     // headerStyle: {
@@ -31,14 +42,5 @@ This.navigationOptions = function({ navigation, navigationOptions }) {
     // headerTintColor: navigationOptions.headerStyle.backgroundColor
   }
 }
-export default This
+export default Component
 
-const style = StyleSheet.create({
-  This: {
-    flex: 1,
-    backgroundColor: 'yellow' //color
-  },
-  ScrollView: {
-    marginBottom: 9 * 8
-  }
-})

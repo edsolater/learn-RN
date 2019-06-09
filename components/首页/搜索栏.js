@@ -1,5 +1,7 @@
 import React from 'react'
-import { StyleSheet, View,  Text } from 'react-native'
+import { StyleSheet, View, Text } from 'react-native'
+import Colors from '../../constants/Colors'
+import Layout from '../../constants/Layout'
 
 //---固定内容---//
 
@@ -14,10 +16,9 @@ export default function This({ navigation }) {
 }
 const style = StyleSheet.create({
   This: {
-    justifyContent: 'center',
-    alignItems: 'center',
+    ...Layout.content.center,
     backgroundColor: 'gray',
-    height: '10%',
+    height: '10%'
   },
   Text: {
     color: 'white',
