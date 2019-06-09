@@ -10,6 +10,8 @@ export default {
   warningBackground: '#EAEB5E',
   warningText: '#666804',
   noticeBackground: tintColor,
-  noticeText: '#fff',
   screenBackground: '#eee',
+  noticeText: '#fff',
+  textBoxColor:'hsla(150, 100%, 50%, 0.78)',
+  boxBackground: 'hsla(0, 0%, 90%, 0.9)'
 }

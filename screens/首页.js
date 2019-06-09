@@ -22,6 +22,7 @@ function Component({ navigation }) {
       <Banner navigation={navigation} />
       <金刚区 navigation={navigation} />
       <商品卡片 navigation={navigation} />
+      <商品卡片 navigation={navigation} />
     </Screen>
   )
 }

@@ -4,16 +4,13 @@ const width = Dimensions.get('window').width
 const height = Dimensions.get('window').height
 
 export default {
-  window: {
-    width,
-    height
-  },
-  isSmallDevice: width < 375,
+  textSize:14,
+  textBoxWidth: 6 * 14,
   bottomNavBarHeight: 18 * 4,
-  content: {
+  shortcut: {
     center: {
       justifyContent: 'center',
       alignItems: 'center'
     }
-  }
+  },
 }
