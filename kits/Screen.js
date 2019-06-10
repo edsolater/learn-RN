@@ -1,31 +1,26 @@
 import React from 'react'
-import {
-  StyleSheet,
-  ScrollView,
-  View,
-  Image,
-  StatusBar,
-  Text
-} from 'react-native'
+import { ScrollView, View, StatusBar } from 'react-native'
 import Colors from '../constants/Colors'
 import Layout from '../constants/Layout'
 
-export default function Screen({
-  children,
-  bottomNavBar,
-}) {
+export default function Screen({ children, NavBar, fill, iconTheme }) {
   return (
-    <View style={{ flex:1 }}>
-      <StatusBar barStyle="dark-content" />
+    <View
+      style={{
+        flex: 1,
+        backgroundColor: fill || Colors.backgroundColor.Screen
+      }}
+    >
+      <StatusBar barStyle={`${iconTheme}-content`} />
       <ScrollView
         style={{
-          marginBottom: Layout.bottomNavBarHeight,
+          marginBottom: Layout.NavBarHeight,
           backgroundColor: Colors.screenBackground
         }}
       >
         {children}
       </ScrollView>
-      {bottomNavBar}
+      {NavBar}
     </View>
   )
 }

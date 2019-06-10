@@ -7,9 +7,9 @@ export default function Box({
   // children
   children,
 
-  // layout
-  size,
-  location,
+  // 尺寸、位置
+  size, // 快捷属性
+  location, // 快捷属性
   width,
   height,
   top,
@@ -17,19 +17,19 @@ export default function Box({
   bottom,
   left,
 
-  // apperance
+  // 外观
   round,
   fill,
   shadow,
 
-  // boolean
+  // 控制组件特性
   center,
   centerX,
   centerY,
   absolute,
   inflexiable,
 
-  // for debug
+  // 只是为了开发，非控件避免调用它们
   style
 }) {
   /**
