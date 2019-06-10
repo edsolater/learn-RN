@@ -12,8 +12,8 @@ export default function 搜索栏({ navigation }) {
       center
     >
       <Box
-        apperance={{ fill: 'hsla(50, 0%, 90%, 0.8)' }}
         layout={{ left: 28 }}
+        apperance={{ fill: 'hsla(50, 0%, 90%, 0.8)' }}
         center
         absolute
       >
