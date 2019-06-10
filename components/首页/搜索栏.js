@@ -1,5 +1,5 @@
 import React from 'react'
-import { Text, Box } from '../../kits/__all__'
+import { Text, Box } from '../../kits'
 import Colors from '../../constants/Colors'
 import Layout from '../../constants/Layout'
 

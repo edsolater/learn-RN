@@ -1,6 +1,6 @@
 import React from 'react'
 import { StyleSheet, ScrollView, View, Image, StatusBar } from 'react-native'
-import { Screen } from '../kits/__all__'
+import { Screen } from '../kits'
 
 import 底部导航栏 from '../components/底部导航栏'
 import 搜索栏 from '../components/首页/搜索栏'
