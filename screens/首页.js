@@ -15,7 +15,7 @@ const style = StyleSheet.create({
   }
 })
 
-function Component({ navigation }) {
+function 首页({ navigation }) {
   return (
     <Screen bottomNavBar={<底部导航栏 navigation={navigation} />}>
       <搜索栏 navigation={navigation} />
@@ -26,7 +26,7 @@ function Component({ navigation }) {
     </Screen>
   )
 }
-Component.navigationOptions = ({ navigation, defaultNavigationOptions }) => ({
+首页.navigationOptions = ({ navigation, defaultNavigationOptions }) => ({
   title: '首页',
   headerStyle: {
     backgroundColor: '#333',
@@ -34,4 +34,4 @@ Component.navigationOptions = ({ navigation, defaultNavigationOptions }) => ({
   },
   headerTintColor: '#fff'
 })
-export default Component
+export default 首页

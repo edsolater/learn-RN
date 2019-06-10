@@ -1,6 +1,5 @@
 import React from 'react'
-import { StyleSheet, View } from 'react-native'
-import { Textbox, Box } from '../../kits/__all__'
+import { Text, Box } from '../../kits/__all__'
 import Colors from '../../constants/Colors'
 import Layout from '../../constants/Layout'
 
@@ -8,20 +7,26 @@ import Layout from '../../constants/Layout'
 export default function 搜索栏({ navigation }) {
   return (
     <Box
-      layout={{ height: 32, right: 28, left: 40 }}
+      layout={{ size: '50%' }}
       apperance={{ fill: 'red', rounded: 4 }}
-      box={{}}
+      center
     >
-      <Textbox
-        font={{
-          color: 'black',
-          fontSize: 18
-        }}
-        layout={{}}
+      <Box
+        apperance={{ fill: 'hsla(50, 0%, 90%, 0.8)' }}
+        layout={{ left: 28 }}
         center
+        absolute
       >
-        搜索栏
-      </Textbox>
+        <Text
+          layout={{}}
+          font={{
+            color: 'black',
+            fontSize: 18
+          }}
+        >
+          搜索栏
+        </Text>
+      </Box>
     </Box>
   )
 }

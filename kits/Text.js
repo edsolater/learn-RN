@@ -4,7 +4,7 @@ import Colors from '../constants/Colors'
 import Layout from '../constants/Layout'
 
 const boxStyle_default = {
-  backgroundColor: Colors.textBoxColor,
+  backgroundColor: Colors.text.main,
   width: Layout.textBoxWidth
 }
 export default function Textbox({ children, font, box, layout, center }) {

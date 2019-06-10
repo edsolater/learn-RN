@@ -13,7 +13,6 @@ import Layout from '../constants/Layout'
 export default function Screen({
   children,
   bottomNavBar,
-  style: styleFromInstance
 }) {
   return (
     <View style={{ flex:1 }}>
