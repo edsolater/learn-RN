@@ -3,6 +3,10 @@ import { View } from 'react-native'
 import Colors from '../constants/Colors'
 import Layout from '../constants/Layout'
 
+const defaultStyle = {
+  fill: Colors.backgroundColor.Box
+}
+
 export default function Box({
   // children
   children,
@@ -20,15 +24,16 @@ export default function Box({
   // 外观
   round,
   fill,
-  shadow,
   elevation, //Android 设置阴影的
 
-  // 控制组件特性
-  center,
+  // 快速开启某些特性
+  absolute,
+  start, //组件x轴位置：最左
+  center, //组件x轴位置：居中（必要的话也会y轴居中）
   centerX,
   centerY,
-  absolute,
-  inflexiable,
+  end, //组件x轴位置：最右
+  flex, // 可以的话，纵向占满
 
   // 只是为了开发，非控件避免调用它们
   style
@@ -83,11 +88,15 @@ export default function Box({
   const content = (
     <View
       style={{
+        flex: (typeof flex === 'number' && flex) || (flex && 1),
         ...boxsize,
         ...(absolute ? boxLocation_absolute : boxLoaction_normal),
-        alignSelf: (centerX && 'center') || (inflexiable && 'flex-start'),
+        alignSelf:
+          (start && 'flex-start') ||
+          (centerX && 'center') ||
+          (end && 'flex-end'),
         borderRadius: round,
-        backgroundColor: fill || Colors.backgroundColor.Box,
+        backgroundColor: fill || defaultStyle.fill,
         elevation,
         ...style
       }}

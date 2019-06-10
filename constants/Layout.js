@@ -5,7 +5,7 @@ const height = Dimensions.get('window').height
 
 export default {
   textSize:14,
-  textBoxWidth: 6 * 14,
+  textBoxWidth: 10 * 14,
   shortcut: {
     center: {
       justifyContent: 'center',

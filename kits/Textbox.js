@@ -4,6 +4,12 @@ import Box from './Box'
 import Colors from '../constants/Colors'
 import Layout from '../constants/Layout'
 
+const defaultStyle = {
+  width: Layout.textBoxWidth,
+  fill: Colors.backgroundColor.Textbox,
+  fontColor: Colors.text.main
+}
+
 export default function Textbox({
   children,
   font,
@@ -15,10 +21,16 @@ export default function Textbox({
   return (
     <Box
       {...otherProps}
-      width={width || (!children || Layout.textBoxWidth)}
-      fill={fill || (!children || Colors.backgroundColor.Textbox)}
+      width={width || (!children || defaultStyle.width)}
+      fill={fill || (!children || defaultStyle.fill)}
     >
-      <Text style={{ ...font, textAlign: centerInBox && 'center' }}>
+      <Text
+        style={{
+          color: font.color || defaultStyle.fontColor,
+          ...font,
+          textAlign: centerInBox && 'center'
+        }}
+      >
         {children}
       </Text>
     </Box>
