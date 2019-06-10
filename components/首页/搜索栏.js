@@ -6,13 +6,10 @@ export default function 搜索栏({ navigation }) {
   return (
     <Box width="50%" height={36} round={4} center>
       <Textbox
-        font={{
-          color: 'black',
-          fontSize: 18
-        }}
+        fontType="main"
+        fontCenter
         wordNum={8}
         boxCenter
-        fontCenter
         boxColor="red"
       >
         搜索栏这里有八字

@@ -7,7 +7,6 @@ const defaultStyle = {
 }
 
 export default function Box({
-  // children
   children,
 
   // 尺寸、位置
@@ -23,6 +22,7 @@ export default function Box({
   // 外观
   round,
   boxColor,
+  opacity,
   elevation, //Android 设置阴影的
 
   // 快速开启某些特性
@@ -34,7 +34,7 @@ export default function Box({
   end, //组件x轴位置：最右
   flex, // 可以的话，纵向占满
 
-  // 只是为了开发，非控件避免调用它们
+  // 只是为了开发方便，非控件避免调用它们
   style
 }) {
   /**
@@ -97,6 +97,7 @@ export default function Box({
         borderRadius: round,
         backgroundColor: boxColor || defaultStyle.boxColor,
         elevation,
+        opacity,
         ...style
       }}
     >
