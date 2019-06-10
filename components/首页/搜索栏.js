@@ -10,6 +10,7 @@ export default function 搜索栏({ navigation }) {
       layout={{ size: '50%' }}
       apperance={{ fill: 'red', rounded: 4 }}
       center
+      unflex
     >
       <Box
         layout={{ left: 28 }}

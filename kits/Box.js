@@ -11,7 +11,7 @@ export default function Box({
   centerX,
   centerY,
   absolute,
-  unflexable,
+  unflex,
   style
 }) {
   /**
@@ -65,10 +65,10 @@ export default function Box({
     <View
       style={{
         ...boxsize,
-        ...(absolute ? boxLoaction_normal : boxLocation_absolute),
-        alignSelf: (centerX && 'center') || (unflexable && 'flex-start'),
+        ...(absolute ? boxLocation_absolute : boxLoaction_normal),
+        alignSelf: (centerX && 'center') || (unflex && 'flex-start'),
         borderRadius: rounded,
-        backgroundColor: fill || Colors.boxBackground,
+        backgroundColor: fill || Colors.backgroundColor.box,
         ...style
       }}
     >
