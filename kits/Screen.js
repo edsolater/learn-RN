@@ -1,10 +1,9 @@
 import React from 'react'
 import { ScrollView, View, StatusBar } from 'react-native'
-import Colors from '../constants/Colors'
-import Layout from '../constants/Layout'
+import { GlobalStyle } from '../constants'
 
 const defaultStyle = {
-  backgroundColor: Colors.backgroundColor.Screen,
+  backgroundColor: GlobalStyle.boxColor.ScreenBackground,
   statusBarIconTheme: 'light'
 }
 

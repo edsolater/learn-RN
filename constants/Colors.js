@@ -13,7 +13,7 @@ export default {
   screenBackground: '#eee',
   noticeText: '#fff',
   text: { main: 'hsla(150, 100%, 50%, 0.78)' },
-  backgroundColor: {
+  boxColor: {
     Screen: 'hsl(0, 100%, 100%)',
     Box: 'hsla(208, 100%, 70%, 0.9)',
     Textbox: 'hsla(150, 100%, 50%, 0.78)'

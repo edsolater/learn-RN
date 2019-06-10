@@ -1,10 +1,9 @@
 import React from 'react'
 import { View } from 'react-native'
-import Colors from '../constants/Colors'
-import Layout from '../constants/Layout'
+import { GlobalStyle } from '../constants'
 
 const defaultStyle = {
-  fill: Colors.backgroundColor.Box
+  boxColor: GlobalStyle.boxColor.Box
 }
 
 export default function Box({
@@ -23,7 +22,7 @@ export default function Box({
 
   // 外观
   round,
-  fill,
+  boxColor,
   elevation, //Android 设置阴影的
 
   // 快速开启某些特性
@@ -39,7 +38,7 @@ export default function Box({
   style
 }) {
   /**
-   * -------------------- 工具函数（可优化） --------------------
+   * ---------------- 工具函数（可优化） ----------------
    */
   function get(obj, index) {
     if (Array.isArray(obj)) {
@@ -54,7 +53,7 @@ export default function Box({
   }
 
   /**
-   * -------------------- 处理 props (可优化) --------------------
+   * ---------------- 处理 props (可优化) ----------------
    */
   // center 代表x轴、y轴都居中
   if (center) centerX = centerY = true
@@ -66,7 +65,7 @@ export default function Box({
   if (centerY) top = bottom = undefined
 
   /**
-   * -------------------- 返回组件 --------------------
+   * ---------------- 返回组件 ----------------
    */
   // <Box> 的核心包裹器，默认状态是无法（逻辑上也不能）y轴居中的
   const boxsize = {
@@ -96,7 +95,7 @@ export default function Box({
           (centerX && 'center') ||
           (end && 'flex-end'),
         borderRadius: round,
-        backgroundColor: fill || defaultStyle.fill,
+        backgroundColor: boxColor || defaultStyle.boxColor,
         elevation,
         ...style
       }}

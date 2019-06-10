@@ -1,28 +1,27 @@
 import React from 'react'
-import { View, Text } from 'react-native'
+import { Text } from 'react-native'
 import Box from './Box'
-import Colors from '../constants/Colors'
-import Layout from '../constants/Layout'
+import { GlobalStyle } from '../constants'
 
 const defaultStyle = {
-  width: Layout.textBoxWidth,
-  fill: Colors.backgroundColor.Textbox,
-  fontColor: Colors.text.main
+  width: GlobalStyle.textBoxWidth,
+  boxColor: GlobalStyle.boxColor.Textbox,
+  fontColor: GlobalStyle.text.main
 }
 
 export default function Textbox({
   children,
   font,
-  width,
-  fill,
+  amount,
+  boxColor,
   centerInBox,
   ...otherProps
 }) {
   return (
     <Box
       {...otherProps}
-      width={width || (!children || defaultStyle.width)}
-      fill={fill || (!children || defaultStyle.fill)}
+      width={(amount || 8) * (font.fontSize || defaultStyle.textBoxWidth)}
+      boxColor={boxColor || (children ? 'transparent' : defaultStyle.boxColor)}
     >
       <Text
         style={{
