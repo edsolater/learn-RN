@@ -11,23 +11,26 @@ const defaultStyle = {
 
 export default function Textbox({
   children,
+  fontColor, // 优先级较高
   font,
-  amount,
+  wordNum,
   boxColor,
-  centerInBox,
+  fontCenter,
+  boxCenter:center,
   ...otherProps
 }) {
   return (
     <Box
       {...otherProps}
-      width={(amount || 8) * (font.fontSize || defaultStyle.textBoxWidth)}
+      width={(wordNum || 8) * (font.fontSize || defaultStyle.textBoxWidth)}
       boxColor={boxColor || (children ? 'transparent' : defaultStyle.boxColor)}
+      center={center}
     >
       <Text
         style={{
-          color: font.color || defaultStyle.fontColor,
           ...font,
-          textAlign: centerInBox && 'center'
+          color: fontColor || font.color || defaultStyle.fontColor,
+          textAlign: fontCenter && 'center'
         }}
       >
         {children}

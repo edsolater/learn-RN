@@ -10,12 +10,12 @@ export default function 搜索栏({ navigation }) {
           color: 'black',
           fontSize: 18
         }}
-        amount={8}
-        center
-        centerInBox
+        wordNum={8}
+        boxCenter
+        fontCenter
         boxColor="red"
       >
-        搜索栏这里有个字
+        搜索栏这里有八字
       </Textbox>
     </Box>
   )
