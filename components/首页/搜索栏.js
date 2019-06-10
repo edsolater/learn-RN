@@ -7,17 +7,13 @@ import Layout from '../../constants/Layout'
 export default function 搜索栏({ navigation }) {
   return (
     <Box
-      layout={{ size: '50%' }}
-      apperance={{ fill: 'red', rounded: 4 }}
+      size= '50%' 
+      fill='red'
+      round={4}
       center
       unflex
     >
-      <Box
-        layout={{ left: 28 }}
-        apperance={{ fill: 'hsla(50, 0%, 90%, 0.8)' }}
-        center
-        absolute
-      >
+      <Box>
         <Text
           layout={{}}
           font={{

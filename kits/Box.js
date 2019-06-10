@@ -4,14 +4,32 @@ import Colors from '../constants/Colors'
 import Layout from '../constants/Layout'
 
 export default function Box({
+  // children
   children,
-  layout: { size, location, width, height, top, right, bottom, left } = {},
-  apperance: { rounded, fill, shadow } = {},
+
+  // layout
+  size,
+  location,
+  width,
+  height,
+  top,
+  right,
+  bottom,
+  left,
+
+  // apperance
+  round,
+  fill,
+  shadow,
+
+  // boolean
   center,
   centerX,
   centerY,
   absolute,
   unflex,
+
+  // for debug
   style
 }) {
   /**
@@ -67,8 +85,8 @@ export default function Box({
         ...boxsize,
         ...(absolute ? boxLocation_absolute : boxLoaction_normal),
         alignSelf: (centerX && 'center') || (unflex && 'flex-start'),
-        borderRadius: rounded,
-        backgroundColor: fill || Colors.backgroundColor.box,
+        borderRadius: round,
+        backgroundColor: fill || Colors.backgroundColor.Box,
         ...style
       }}
     >
