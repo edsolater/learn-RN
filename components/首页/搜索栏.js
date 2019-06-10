@@ -1,5 +1,5 @@
 import React from 'react'
-import { Text, Box } from '../../kits'
+import { Textbox, Box } from '../../kits'
 import Colors from '../../constants/Colors'
 import Layout from '../../constants/Layout'
 
@@ -7,22 +7,20 @@ import Layout from '../../constants/Layout'
 export default function 搜索栏({ navigation }) {
   return (
     <Box
-      size= '50%' 
-      fill='red'
+      size='50%' 
       round={4}
       center
       inflexiable
     >
       <Box>
-        <Text
-          layout={{}}
+        <Textbox
           font={{
             color: 'black',
             fontSize: 18
           }}
         >
           搜索栏
-        </Text>
+        </Textbox>
       </Box>
     </Box>
   )

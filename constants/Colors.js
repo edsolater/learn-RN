@@ -14,7 +14,7 @@ export default {
   noticeText: '#fff',
   text: { main: 'hsla(150, 100%, 50%, 0.78)' },
   backgroundColor: {
-    Box: 'hsla(0, 0%, 90%, 0.9)',
+    Box: 'hsla(208, 100%, 70%, 0.9)',
     Textbox: 'hsla(150, 100%, 50%, 0.78)'
   }
 }
