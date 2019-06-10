@@ -27,7 +27,7 @@ export default function Box({
   centerX,
   centerY,
   absolute,
-  unflex,
+  rigid,
 
   // for debug
   style
@@ -84,7 +84,7 @@ export default function Box({
       style={{
         ...boxsize,
         ...(absolute ? boxLocation_absolute : boxLoaction_normal),
-        alignSelf: (centerX && 'center') || (unflex && 'flex-start'),
+        alignSelf: (centerX && 'center') || (rigid && 'flex-start'),
         borderRadius: round,
         backgroundColor: fill || Colors.backgroundColor.Box,
         ...style

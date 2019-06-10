@@ -11,7 +11,7 @@ export default function 搜索栏({ navigation }) {
       fill='red'
       round={4}
       center
-      unflex
+      rigid
     >
       <Box>
         <Text
