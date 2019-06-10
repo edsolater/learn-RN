@@ -1,7 +1,6 @@
 import React from 'react'
 import { StyleSheet, View, TouchableHighlight, Image, Text } from 'react-native'
 
-export const height = 18 * 4
 const images = [
   {
     source: require('../assets/images/跳转：首页.png'),
@@ -24,10 +23,7 @@ export default function Component({ navigation }) {
     <View
       style={{
         width: '100%',
-        height,
-        position: 'absolute',
-        bottom: 0,
-        zIndex: 24,
+        height: 72,
         flexDirection: 'row',
         justifyContent: 'space-around',
         alignItems: 'center',

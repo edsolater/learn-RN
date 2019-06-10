@@ -21,6 +21,7 @@ export default function Box({
   round,
   fill,
   shadow,
+  elevation, //Android 设置阴影的
 
   // 控制组件特性
   center,
@@ -87,6 +88,7 @@ export default function Box({
         alignSelf: (centerX && 'center') || (inflexiable && 'flex-start'),
         borderRadius: round,
         backgroundColor: fill || Colors.backgroundColor.Box,
+        elevation,
         ...style
       }}
     >
