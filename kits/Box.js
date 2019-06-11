@@ -46,16 +46,24 @@ export default function Box({
   /**
    * ---------------- 工具函数（可优化） ----------------
    */
-  function get(obj, index) {
-    if (Array.isArray(obj)) {
-      const length = obj.length
-      while (obj[index] === undefined) {
-        index -= length
-      }
-      return obj[index]
-    } else {
-      return obj
+  function fix(value_input) {
+    const value_array = Array.of(value_input).flat()
+    switch (value_array.length) {
+      case 1:
+        return value_array
+          .concat(value_array)
+          .concat(value_array)
+          .concat(value_array)
+      case 2:
+        return value_array.concat(value_array)
+      case 3:
+        return value_array.concat(value_array)
+      default:
+        return value_array
     }
+  }
+  function merge(arrayA, arrayB) {
+    return arrayB.map((elementB, index) => arrayA[index] || elementB)
   }
 
   /**
@@ -73,32 +81,36 @@ export default function Box({
   // 上下的设定会干扰到居中，故y轴居中时上下设定无效
   if (centerY) top = bottom = undefined
 
+  // 处理尺寸信息
+  size = merge(fix(size), [width, height])
+
+  // 处理位置信息（相对）
+  location = merge(fix(location), [top, right, bottom, left])
+
   /**
    * ---------------- 返回组件 ----------------
    */
   // <Box> 的核心包裹器，默认状态是无法（逻辑上也不能）y轴居中的
-  const boxsize = {
-    width: width || get(size, 0),
-    height: height || get(size, 1)
-  }
-  const boxLoaction_normal = {
-    marginTop: top || get(location, 0),
-    marginRight: right || get(location, 1),
-    marginBottom: bottom || get(location, 2),
-    marginLeft: left || get(location, 3)
-  }
-  const boxLocation_absolute = {
-    top: top || get(location, 0),
-    right: right || get(location, 1),
-    bottom: bottom || get(location, 2),
-    left: left || get(location, 3)
-  }
+
   const content = (
     <View
       style={{
         flex: (typeof flex === 'number' && flex) || (flex && 1),
-        ...boxsize,
-        ...(absolute ? boxLocation_absolute : boxLoaction_normal),
+        width: size[0],
+        height: size[1],
+        ...(absolute
+          ? {
+              top: location[0],
+              right: location[1],
+              bottom: location[2],
+              left: location[3]
+            }
+          : {
+              marginTop: location[0],
+              marginRight: location[1],
+              marginBottom: location[2],
+              marginLeft: location[3]
+            }),
         alignSelf:
           (start && 'flex-start') ||
           (centerX && 'center') ||
