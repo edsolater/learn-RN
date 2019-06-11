@@ -9,7 +9,7 @@ export default function 搜索栏({ navigation }) {
         fontType="main"
         fontCenter
         wordNum={8}
-        boxCenter
+        center
         boxColor="red"
       >
         搜索栏这里有八字

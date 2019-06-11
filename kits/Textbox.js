@@ -18,20 +18,20 @@ export default function Textbox({
   fontSize,
   type, // 实际上规定了 fontSize
   center_text,
-  rootElementStyle_Text, // 不得已才调用 
-  rootElement_text, // 不得已才调用
-  
+  rootElementStyle_Text,
+  rootElement_text,
+
   // textbox 字体盒子相关设定
   boxWidth,
   wordNum, // 实际上与 fontSize 联合规定了 boxWidth
   boxColor,
   center_Box,
   center,
-  rootElementStyle_Box, // 不得已才调用
-  rootElement_Box, // 不得已才调用
+  rootElementStyle_Box,
+  rootElement_Box,
   ...otherProps_Box
 }) {
-  center = center || center_Box // 所以 center_Box 只是为了增加语义性
+  center = center || center_Box // 所以 center_Box 是为了和 center_text 保持对称xin
   return (
     <Box
       width={
@@ -41,7 +41,7 @@ export default function Textbox({
       }
       boxColor={boxColor || (children ? 'transparent' : defaultStyle.boxColor)}
       center={center}
-      style={rootElementStyle_Box}
+      style={{...rootElementStyle_Box}}
       {...otherProps_Box}
       rootElement_view={rootElement_Box}
     >
