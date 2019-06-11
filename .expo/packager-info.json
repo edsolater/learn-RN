@@ -1,10 +1,10 @@
 {
   "expoServerPort": 19000,
   "packagerPort": 19001,
-  "packagerPid": 19976,
-  "expoServerNgrokUrl": "https://dh-sh2.anonymous.learn-rn.exp.direct",
-  "packagerNgrokUrl": "https://packager.dh-sh2.anonymous.learn-rn.exp.direct",
-  "ngrokPid": 10392,
+  "packagerPid": 11888,
+  "expoServerNgrokUrl": "https://h8-ecs.anonymous.learn-rn.exp.direct",
+  "packagerNgrokUrl": "https://packager.h8-ecs.anonymous.learn-rn.exp.direct",
+  "ngrokPid": 7036,
   "webpackServerPort": 19006,
   "devToolsPort": 19002
 }
