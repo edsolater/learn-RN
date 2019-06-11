@@ -9,14 +9,39 @@ const defaultStyle = {
 
 export default function Screen({
   children,
+
+  // 被传递的组件
   NavBar,
+
+  // View相关
+  rootElementStyle_view,
+  rootElement_view,
+  
+  // StatusBar相关
   screenBackgroundColor = defaultStyle.backgroundColor,
-  statusBarIconTheme = defaultStyle.statusBarIconTheme
+  statusBarIconTheme = defaultStyle.statusBarIconTheme,
+  rootElementStyle_statusBar,
+  rootElement_statusBar,
+
+  // ScrollView相关
+  rootElementStyle_scrollView,
+  rootElement_scrollView,
+
 }) {
   return (
-    <View style={{ flex: 1 }}>
-      <StatusBar barStyle={`${statusBarIconTheme}-content`} />
-      <ScrollView style={{ backgroundColor: screenBackgroundColor }}>
+    <View style={{ flex: 1, ...rootElementStyle_view }} {...rootElement_view}>
+      <StatusBar
+        barStyle={`${statusBarIconTheme}-content`}
+        style={{ ...rootElementStyle_statusBar }}
+        {...rootElement_statusBar}
+      />
+      <ScrollView
+        style={{
+          backgroundColor: screenBackgroundColor,
+          ...rootElementStyle_scrollView
+        }}
+        {...rootElement_scrollView}
+      >
         {children}
       </ScrollView>
       {NavBar}

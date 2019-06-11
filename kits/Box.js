@@ -6,6 +6,9 @@ const defaultStyle = {
   boxColor: GlobalStyle.boxColor.Box
 }
 
+/**
+ * 此乃最根本的自定义kit，理应逻辑非常复杂，
+ */
 export default function Box({
   children,
 
@@ -34,8 +37,9 @@ export default function Box({
   end, //组件x轴位置：最右
   flex, // 可以的话，纵向占满
 
-  // 只是为了开发方便，非控件避免调用它们
-  style
+  // 元接口
+  rootElementStyle_view,
+  rootElement_view
 }) {
   /**
    * ---------------- 工具函数（可优化） ----------------
@@ -98,8 +102,9 @@ export default function Box({
         backgroundColor: boxColor || defaultStyle.boxColor,
         elevation,
         opacity,
-        ...style
+        ...rootElementStyle_view
       }}
+      {...rootElement_view}
     >
       {children}
     </View>
@@ -117,6 +122,7 @@ export default function Box({
           bottom: 0,
           justifyContent: centerY && 'center'
         }}
+        {...rootElement_view}
       >
         {content}
       </View>
