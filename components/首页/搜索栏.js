@@ -7,7 +7,6 @@ export default function 搜索栏({ navigation }) {
     <Box width="50%" height={36} round={4} center>
       <Textbox
         fontType="main"
-        fontCenter
         wordNum={8}
         center
         boxColor="red"

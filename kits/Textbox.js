@@ -25,13 +25,12 @@ export default function Textbox({
   boxWidth,
   wordNum, // 实际上与 fontSize 联合规定了 boxWidth
   boxColor,
-  center_Box,
-  center,
+  center_Box, //  center_Box 是为了和 center_text 保持对称性而存在
+  center = center_Box,
   rootElementStyle_Box,
   rootElement_Box,
   ...otherProps_Box
 }) {
-  center = center || center_Box // 所以 center_Box 是为了和 center_text 保持对称xin
   return (
     <Box
       width={
@@ -41,7 +40,7 @@ export default function Textbox({
       }
       boxColor={boxColor || (children ? 'transparent' : defaultStyle.boxColor)}
       center={center}
-      style={{...rootElementStyle_Box}}
+      style={{ ...rootElementStyle_Box }}
       {...otherProps_Box}
       rootElement_view={rootElement_Box}
     >
