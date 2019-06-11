@@ -24,7 +24,8 @@ export default function Screen({
   rootElement_statusBar,
 
   // ScrollView相关
-  rootElementStyle_scrollView,
+  style,
+  rootElementStyle_scrollView=style,
   rootElement_scrollView,
 
 }) {

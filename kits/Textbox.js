@@ -18,15 +18,18 @@ export default function Textbox({
   fontSize,
   type, // 实际上规定了 fontSize
   center_text,
-  rootElementStyle_Text,
+  style,
+  rootElementStyle_Text = style,
   rootElement_text,
 
   // textbox 字体盒子相关设定
   boxWidth,
   wordNum, // 实际上与 fontSize 联合规定了 boxWidth
-  boxColor,
-  center_Box, //  center_Box 是为了和 center_text 保持对称性而存在
-  center = center_Box,
+  backgroundColor,
+  background = backgroundColor,
+  boxColor = background,
+  center,
+  center_Box = center, //  center_Box 是为了和 center_text 保持对称性而存在
   rootElementStyle_Box,
   rootElement_Box,
   ...otherProps_Box
@@ -38,8 +41,9 @@ export default function Textbox({
         (wordNum || defaultStyle.wordNum) *
           (fontSize || defaultStyle.fontSize(type))
       }
-      boxColor={boxColor || (children ? 'transparent' : defaultStyle.boxColor)}
-      center={center}
+      boxColor={boxColor || defaultStyle.boxColor}
+      noBoxcolor={children}
+      center={center_Box}
       style={{ ...rootElementStyle_Box }}
       {...otherProps_Box}
       rootElement_view={rootElement_Box}

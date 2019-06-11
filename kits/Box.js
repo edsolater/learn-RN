@@ -29,6 +29,7 @@ export default function Box({
   elevation, //Android 设置阴影的
 
   // 快速开启某些特性
+  noBoxcolor,
   absolute,
   start, //组件x轴位置：最左
   center, //组件x轴位置：居中（必要的话也会y轴居中）
@@ -38,7 +39,8 @@ export default function Box({
   flex, // 可以的话，纵向占满
 
   // 元接口
-  rootElementStyle_view,
+  style,
+  rootElementStyle_view = style,
   rootElement_view
 }) {
   /**
@@ -59,6 +61,9 @@ export default function Box({
   /**
    * ---------------- 处理 props (可优化) ----------------
    */
+  // 设置了 noBoxcolor box就变成全透明的了
+  if (noBoxcolor) boxColor = 'transparent'
+
   // center 代表x轴、y轴都居中
   if (center) centerX = centerY = true
 
