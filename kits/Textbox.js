@@ -3,10 +3,13 @@ import { Text } from 'react-native'
 import Box from './Box'
 import { GlobalStyle } from '../constants'
 
+/**
+ * ---------------- 组件的可自定义配置 ----------------
+ */
 const defaultStyle = {
   wordNum: GlobalStyle.defaultWordNum,
   fontSize: (type = 'main') => GlobalStyle.fontSize[type] || 14,
-  boxColor: GlobalStyle.boxColor.Textbox,
+  boxColor: GlobalStyle.defaultColor.Textbox,
   fontColor: GlobalStyle.fontColor.main
 }
 

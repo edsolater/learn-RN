@@ -2,8 +2,11 @@ import React from 'react'
 import { ScrollView, View, StatusBar } from 'react-native'
 import { GlobalStyle } from '../constants'
 
+/**
+ * ---------------- 组件的可自定义配置 ----------------
+ */
 const defaultStyle = {
-  backgroundColor: GlobalStyle.boxColor.ScreenBackground,
+  backgroundColor: GlobalStyle.defaultColor.ScreenBackground,
   statusBarIconTheme: 'light'
 }
 
@@ -11,7 +14,7 @@ export default function Screen({
   children,
 
   // 被传递的组件
-  NavBar,
+  Navbar,
 
   // View相关
   rootElementStyle_view,
@@ -24,8 +27,7 @@ export default function Screen({
   rootElement_statusBar,
 
   // ScrollView相关
-  style,
-  rootElementStyle_scrollView=style,
+  rootElementStyle_scrollView,
   rootElement_scrollView,
 
 }) {
@@ -45,7 +47,7 @@ export default function Screen({
       >
         {children}
       </ScrollView>
-      {NavBar}
+      {Navbar}
     </View>
   )
 }

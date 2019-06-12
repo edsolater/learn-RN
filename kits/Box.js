@@ -2,8 +2,11 @@ import React from 'react'
 import { View } from 'react-native'
 import { GlobalStyle } from '../constants'
 
+/**
+ * ---------------- 组件的可自定义配置 ----------------
+ */
 const defaultStyle = {
-  boxColor: GlobalStyle.boxColor.Box
+  boxColor: GlobalStyle.defaultColor.Box
 }
 
 /**
@@ -29,7 +32,7 @@ export default function Box({
   elevation, //Android 设置阴影的
 
   // 快速开启某些特性
-  noClipping,
+  clipping,
   noBoxcolor,
   absolute,
   start, //组件x轴位置：最左
@@ -40,9 +43,10 @@ export default function Box({
   flex, // 可以的话，纵向占满
 
   // 元接口
-  style,
+  style, // Box 可以在思考时等价于 View ，是最原始的组件，所以特别给予style。（只有 Box 有此殊荣）
   rootElementStyle_view = style,
-  rootElement_view
+  rootElement_view,
+  ...otherProps
 }) {
   /**
    * ---------------- 工具函数（可优化） ----------------
@@ -54,13 +58,10 @@ export default function Box({
    */
   // 设置了 noBoxcolor box就变成全透明的了
   if (noBoxcolor) boxColor = 'transparent'
-
   // center 代表x轴、y轴都居中
   if (center) centerX = centerY = true
-
   // 左右的设定会干扰到居中，故x轴居中时左右设定无效
   if (centerX) left = right = undefined
-
   // 上下的设定会干扰到居中，故y轴居中时上下设定无效
   if (centerY) top = bottom = undefined
 
@@ -107,10 +108,11 @@ export default function Box({
         backgroundColor: boxColor || defaultStyle.boxColor,
         elevation,
         opacity,
-        overflow: noClipping || 'hidden',
-        ...rootElementStyle_view
+        overflow: clipping && 'hidden',
+        ...rootElementStyle_view,
       }}
       {...rootElement_view}
+      {...otherProps}
     >
       {children}
     </View>

@@ -1,6 +1,5 @@
 import React from 'react'
-import { StyleSheet, View, TouchableOpacity, Image } from 'react-native'
-import { Image as MyImage } from '../../kits'
+import { Image, Box } from '../../kits'
 
 const images = [
   {
@@ -32,34 +31,25 @@ const images = [
 
 export default function This({ navigation }) {
   return (
-    <View style={style.This}>
+    <Box
+      style={{
+        justifyContent: 'flex-start',
+        alignItems: 'center',
+        backgroundColor: 'white'
+      }}
+    >
       {images.map(({ source, name, destination }) => (
-        <MyImage
+        <Image
           key={name}
           source={source}
           onPress={() => navigation.navigate(destination)}
           center_image
-          round={40}
+          round={4}
           size={80}
-          rootElementStyle_Box={{
-            width: 20
-          }}
+          boxClor="#red"
           mode="stretch"
         />
-        // <TouchableOpacity
-        //   key={name}
-        //   onPress={() => navigation.navigate(destination)}
-        // >
-        //   <Image source={source} style={style.Image} />
-        // </TouchableOpacity>
       ))}
-    </View>
+    </Box>
   )
 }
-const style = StyleSheet.create({
-  This: {
-    justifyContent: 'flex-start',
-    alignItems: 'center',
-    backgroundColor: 'white'
-  }
-})

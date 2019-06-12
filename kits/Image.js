@@ -1,10 +1,17 @@
 import React from 'react'
 import { TouchableOpacity, Image, TouchableHighlight } from 'react-native'
 import Box from './Box'
+import { GlobalStyle } from '../constants'
 
+/**
+ * ---------------- 组件的可自定义配置 ----------------
+ */
 const touchEffects = {
   opacity: TouchableOpacity,
   highlight: TouchableHighlight
+}
+const defaultStyle = {
+  boxColor: GlobalStyle.defaultColor.Image
 }
 
 export default function MyImage({
@@ -16,20 +23,15 @@ export default function MyImage({
 
   // Image
   source,
-  mode,
+  mode, // 定义图像相对占位图框的内部位置模式
   size,
   width,
   height,
-  padding,
-  paddingTop,
-  paddingRight,
-  paddingBottom,
-  paddingLeft,
-  style,
-  rootElementStyle_image = style,
+  rootElementStyle_image,
   rootElement_image,
 
   // Box
+  boxColor,
   rootElementStyle_Box, // 为了有代码提示功能
   rootElement_Box, // 为了有代码提示功能
   ...otherProps
@@ -50,8 +52,12 @@ export default function MyImage({
     <Box
       width={width} // 占位尺寸
       height={height} // 占位尺寸
-      rootElementStyle_view={rootElementStyle_Box}
+      rootElementStyle_view={{
+        ...rootElementStyle_Box
+      }}
       rootElement_view={rootElement_Box}
+      boxColor={!source && defaultStyle.boxColor}
+      noBoxcolor={source}
       {...otherProps}
     >
       <ImageTouchEffect
