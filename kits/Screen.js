@@ -6,7 +6,7 @@ import { GlobalStyle } from '../constants'
  * ---------------- 组件的可自定义配置 ----------------
  */
 const defaultStyle = {
-  backgroundColor: GlobalStyle.defaultColor.ScreenBackground,
+  backgroundColor: GlobalStyle.kitColor.ScreenBackground,
   statusBarIconTheme: 'light'
 }
 

@@ -1,33 +1,26 @@
 import React from 'react'
-import { TouchableOpacity } from 'react-native'
-import Box from './Box'
+import Image from './Image'
 import { GlobalStyle } from '../constants'
 
-const defaultStyle = {}
+const defaultStyle = {
+  kitColor: GlobalStyle.kitColor.Icon,
+  kitSize: GlobalStyle.kitSize.Icon
+}
 
 export default function Text({
-  children,
-  font,
-  width,
-  boxColor,
-  centerInBox,
+  defaultSize,
+  defaultColor,
+
+  source,
+  icon = source,
   ...otherProps
 }) {
   return (
-    <Box
+    <Image
+      source={icon}
+      defaultSize={defaultSize || defaultStyle.kitSize}
+      defaultColor={defaultColor || defaultStyle.kitColor}
       {...otherProps}
-      width={width || (!children || defaultStyle.width)}
-      boxColor={boxColor || (!children || defaultStyle.boxColor)}
-    >
-      <Text
-        style={{
-          color: font.color || defaultStyle.fontColor,
-          ...font,
-          textAlign: centerInBox && 'center'
-        }}
-      >
-        {children}
-      </Text>
-    </Box>
+    />
   )
 }

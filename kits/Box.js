@@ -6,7 +6,7 @@ import { GlobalStyle } from '../constants'
  * ---------------- 组件的可自定义配置 ----------------
  */
 const defaultStyle = {
-  boxColor: GlobalStyle.defaultColor.Box
+  kitColor: GlobalStyle.kitColor.Box
 }
 
 /**
@@ -14,6 +14,8 @@ const defaultStyle = {
  */
 export default function Box({
   children,
+  defaultSize,
+  defaultColor,
 
   // 尺寸、位置
   size, // 快捷属性
@@ -56,8 +58,6 @@ export default function Box({
   /**
    * ---------------- 处理 props (可优化) ----------------
    */
-  // 设置了 noBoxcolor box就变成全透明的了
-  if (noBoxcolor) boxColor = 'transparent'
   // center 代表x轴、y轴都居中
   if (center) centerX = centerY = true
   // 左右的设定会干扰到居中，故x轴居中时左右设定无效
@@ -67,7 +67,9 @@ export default function Box({
 
   // 处理尺寸信息
   size = Array.of(size).flat()
-  width = width || size[0] || size[0]
+  defaultSize = Array.of(defaultSize).flat()
+  size = [size[0] || defaultSize[0], size[1] || defaultSize[1]] //考虑到可能会有传来默认的尺寸信息
+  width = width || size[0]
   height = height || size[1] || size[0]
 
   // 处理位置信息（相对）
@@ -81,6 +83,7 @@ export default function Box({
    * ---------------- 返回组件 ----------------
    */
   // <Box> 的核心包裹器，默认状态是无法（逻辑上也不能）y轴居中的
+  console.log('defaultSize: ', defaultSize)
   const content = (
     <View
       style={{
@@ -105,11 +108,15 @@ export default function Box({
           (centerX && 'center') ||
           (end && 'flex-end'),
         borderRadius: round,
-        backgroundColor: boxColor || defaultStyle.boxColor,
+        backgroundColor:
+          (noBoxcolor && 'transparent') ||
+          boxColor ||
+          defaultColor ||
+          defaultStyle.kitColor,
         elevation,
         opacity,
         overflow: clipping && 'hidden',
-        ...rootStyle_view,
+        ...rootStyle_view
       }}
       {...rootProps_view}
       {...otherProps}

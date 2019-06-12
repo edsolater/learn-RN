@@ -7,14 +7,17 @@ import { GlobalStyle } from '../constants'
  * ---------------- 组件的可自定义配置 ----------------
  */
 const defaultStyle = {
-  wordNum: GlobalStyle.defaultWordNum,
+  kitSize: GlobalStyle.kitSize.Text,
   fontSize: (type = 'main') => GlobalStyle.fontSize[type] || 14,
-  boxColor: GlobalStyle.defaultColor.Text,
+  kitColor: GlobalStyle.kitColor.Text,
   fontColor: GlobalStyle.fontColor.main
 }
 
 export default function MyText({
+  defaultSize,
+  defaultColor,
   children,
+  text,
 
   // text 字体相关设定
   fontColor,
@@ -24,7 +27,7 @@ export default function MyText({
   style,
   rootStyle_Text = style,
   rootProps_text,
-  
+
   // Box 相关设定
   boxWidth,
   wordNum, // 实际上与 fontSize 联合规定了 boxWidth
@@ -44,12 +47,13 @@ export default function MyText({
     <Box
       width={
         boxWidth ||
-        (wordNum || defaultStyle.wordNum) *
-          (fontSize || defaultStyle.fontSize(type))
+        (wordNum && wordNum * (fontSize || defaultStyle.fontSize(type)))
       }
-      boxColor={boxColor || defaultStyle.boxColor}
+      boxColor={boxColor}
       noBoxcolor={children}
       center={center_Box}
+      defaultSize={defaultSize || defaultStyle.kitSize}
+      defaultColor={defaultColor || defaultStyle.kitColor}
       rootStyle_view={rootStyle_Box}
       rootProps_view={rootProps_Box}
       {...otherProps}
@@ -59,11 +63,11 @@ export default function MyText({
           fontSize: fontSize || defaultStyle.fontSize(type),
           color: fontColor || defaultStyle.fontColor,
           textAlign: center_text && 'center',
-          ...rootStyle_Text,
+          ...rootStyle_Text
         }}
         {...rootProps_text}
       >
-        {children}
+        {text || children}
       </Text>
     </Box>
   )

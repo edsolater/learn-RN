@@ -6,15 +6,19 @@ import { GlobalStyle } from '../constants'
 /**
  * ---------------- 组件的可自定义配置 ----------------
  */
+const defaultStyle = {
+  kitSize: GlobalStyle.kitSize.Image,
+  kitColor: GlobalStyle.kitColor.Image
+}
 const touchEffects = {
   opacity: TouchableOpacity,
   highlight: TouchableHighlight
 }
-const defaultStyle = {
-  boxColor: GlobalStyle.defaultColor.Image
-}
 
 export default function MyImage({
+  defaultSize,
+  defaultColor,
+
   // Touchable
   onPress,
   type = 'opacity',
@@ -40,7 +44,7 @@ export default function MyImage({
   /**
    * ---------------- 处理 props (可优化) ----------------
    */
-  // 处理尺寸信息
+  // 处理尺寸信息,不用给 Box 看，给 image 看
   size = Array.of(size).flat()
   width = width || size[0]
   height = height || size[1] || size[0]
@@ -49,16 +53,18 @@ export default function MyImage({
    * ---------------- 返回组件 ----------------
    */
   const ImageTouchEffect = touchEffects[type]
+  console.log('defaultSize: ', defaultSize)
   return (
     <Box
-      width={width} // 占位尺寸
-      height={height} // 占位尺寸
-      rootStyle_view={{
-        ...rootStyle_Box
-      }}
-      rootProps_view={rootProps_Box}
-      boxColor={!source && defaultStyle.boxColor}
+      width={width}
+      height={height}
+      size={size}
+      boxColor={boxColor}
       noBoxcolor={source}
+      defaultSize={defaultSize || defaultStyle.kitSize}
+      defaultColor={defaultColor || defaultStyle.kitColor}
+      rootStyle_view={{ ...rootStyle_Box }}
+      rootProps_view={rootProps_Box}
       {...otherProps}
     >
       <ImageTouchEffect

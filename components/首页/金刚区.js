@@ -1,5 +1,5 @@
 import React from 'react'
-import { Image, Box } from '../../kits'
+import { Image, Box, Icon } from '../../kits'
 
 const images = [
   {
@@ -39,14 +39,13 @@ export default function This({ navigation }) {
       }}
     >
       {images.map(({ source, name, destination }) => (
-        <Image
+        <Icon
           key={name}
           source={source}
           onPress={() => navigation.navigate(destination)}
-          center_image
           round={4}
-          size={80}
-          boxClor="#red"
+          size={24}
+          boxColor="#red"
           mode="stretch"
         />
       ))}
