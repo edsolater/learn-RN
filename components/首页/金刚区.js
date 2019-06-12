@@ -49,6 +49,7 @@ export default function This({ navigation }) {
           mode="stretch"
         />
       ))}
+      <Icon defaultColor='red'/>
     </Box>
   )
 }

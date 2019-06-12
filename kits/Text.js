@@ -13,7 +13,7 @@ const defaultStyle = {
   fontColor: GlobalStyle.fontColor.main
 }
 
-export default function MyText({
+export default function KitText({
   defaultSize,
   defaultColor,
   children,

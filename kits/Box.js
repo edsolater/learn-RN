@@ -12,7 +12,7 @@ const defaultStyle = {
 /**
  * 此乃最根本的自定义kit，理应逻辑非常复杂，
  */
-export default function Box({
+export default function KitBox({
   children,
   defaultSize,
   defaultColor,
@@ -34,6 +34,7 @@ export default function Box({
   elevation, //Android 设置阴影的
 
   // 快速开启某些特性
+  noClipping,
   clipping,
   noBoxcolor,
   absolute,
@@ -83,7 +84,6 @@ export default function Box({
    * ---------------- 返回组件 ----------------
    */
   // <Box> 的核心包裹器，默认状态是无法（逻辑上也不能）y轴居中的
-  console.log('defaultSize: ', defaultSize)
   const content = (
     <View
       style={{
@@ -115,7 +115,7 @@ export default function Box({
           defaultStyle.kitColor,
         elevation,
         opacity,
-        overflow: clipping && 'hidden',
+        overflow: (noClipping && 'visible') || (clipping && 'hidden'),
         ...rootStyle_view
       }}
       {...rootProps_view}

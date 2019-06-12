@@ -1,5 +1,5 @@
 import React from 'react'
-import Image from './Image'
+import Box from './Box'
 import { GlobalStyle } from '../constants'
 
 const defaultStyle = {
@@ -7,9 +7,10 @@ const defaultStyle = {
   kitSize: GlobalStyle.kitSize.Icon
 }
 
-export default function KitIcon({
+export default function KitBoard({
   defaultSize,
   defaultColor,
+  children,
 
   circle,
   rect,

@@ -10,7 +10,7 @@ const defaultStyle = {
   statusBarIconTheme: 'light'
 }
 
-export default function Screen({
+export default function KitScreen({
   children,
 
   // 被传递的组件

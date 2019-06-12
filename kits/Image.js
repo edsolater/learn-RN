@@ -15,7 +15,7 @@ const touchEffects = {
   highlight: TouchableHighlight
 }
 
-export default function MyImage({
+export default function KitImage({
   defaultSize,
   defaultColor,
 
@@ -36,6 +36,8 @@ export default function MyImage({
   rootProps_image,
 
   // Box
+  round, // 权重在 circle之下
+  circle,
   boxColor,
   rootStyle_Box, // 为了有代码提示功能
   rootProps_Box, // 为了有代码提示功能
@@ -53,14 +55,15 @@ export default function MyImage({
    * ---------------- 返回组件 ----------------
    */
   const ImageTouchEffect = touchEffects[type]
-  console.log('defaultSize: ', defaultSize)
   return (
     <Box
       width={width}
       height={height}
       size={size}
+      round={(circle && 10000) || round}
       boxColor={boxColor}
       noBoxcolor={source}
+      clipping
       defaultSize={defaultSize || defaultStyle.kitSize}
       defaultColor={defaultColor || defaultStyle.kitColor}
       rootStyle_view={{ ...rootStyle_Box }}
