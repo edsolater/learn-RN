@@ -5,7 +5,7 @@ import { GlobalStyle } from '../constants'
 
 const defaultStyle = {}
 
-export default function Textbox({
+export default function Text({
   children,
   font,
   width,

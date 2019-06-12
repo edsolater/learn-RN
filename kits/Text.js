@@ -9,22 +9,23 @@ import { GlobalStyle } from '../constants'
 const defaultStyle = {
   wordNum: GlobalStyle.defaultWordNum,
   fontSize: (type = 'main') => GlobalStyle.fontSize[type] || 14,
-  boxColor: GlobalStyle.defaultColor.Textbox,
+  boxColor: GlobalStyle.defaultColor.Text,
   fontColor: GlobalStyle.fontColor.main
 }
 
-export default function Textbox({
+export default function MyText({
   children,
 
-  // font 字体相关设定
+  // text 字体相关设定
   fontColor,
   fontSize,
   type, // 实际上规定了 fontSize
   center_text,
-  rootElementStyle_Text,
-  rootElement_text,
-
-  // textbox 字体盒子相关设定
+  style,
+  rootStyle_Text = style,
+  rootProps_text,
+  
+  // Box 相关设定
   boxWidth,
   wordNum, // 实际上与 fontSize 联合规定了 boxWidth
   backgroundColor,
@@ -32,8 +33,8 @@ export default function Textbox({
   boxColor = background,
   center,
   center_Box = center, //  center_Box 是为了和 center_text 保持对称性而存在
-  rootElementStyle_Box,
-  rootElement_Box,
+  rootStyle_Box,
+  rootProps_Box,
   ...otherProps
 }) {
   /**
@@ -49,18 +50,18 @@ export default function Textbox({
       boxColor={boxColor || defaultStyle.boxColor}
       noBoxcolor={children}
       center={center_Box}
-      rootElementStyle_view={rootElementStyle_Box}
-      rootElement_view={rootElement_Box}
+      rootStyle_view={rootStyle_Box}
+      rootProps_view={rootProps_Box}
       {...otherProps}
     >
       <Text
         style={{
-          ...rootElementStyle_Text,
           fontSize: fontSize || defaultStyle.fontSize(type),
           color: fontColor || defaultStyle.fontColor,
-          textAlign: center_text && 'center'
+          textAlign: center_text && 'center',
+          ...rootStyle_Text,
         }}
-        {...rootElement_text}
+        {...rootProps_text}
       >
         {children}
       </Text>

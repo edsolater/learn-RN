@@ -10,7 +10,7 @@ export default {
   defaultColor: {
     Screen: 'hsl(0, 100%, 100%)',
     Box: 'hsla(208, 100%, 70%, 0.9)',
-    Textbox: 'hsla(150, 100%, 50%, 0.78)',
+    Text: 'hsla(150, 100%, 50%, 0.78)',
     Image: 'hsl(0, 0%, 90%)'
   },
   defaultLayout:{

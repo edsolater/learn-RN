@@ -43,9 +43,9 @@ export default function Box({
   flex, // 可以的话，纵向占满
 
   // 元接口
-  style, // Box 可以在思考时等价于 View ，是最原始的组件，所以特别给予style。（只有 Box 有此殊荣）
-  rootElementStyle_view = style,
-  rootElement_view,
+  style,
+  rootStyle_view = style,
+  rootProps_view,
   ...otherProps
 }) {
   /**
@@ -109,9 +109,9 @@ export default function Box({
         elevation,
         opacity,
         overflow: clipping && 'hidden',
-        ...rootElementStyle_view,
+        ...rootStyle_view,
       }}
-      {...rootElement_view}
+      {...rootProps_view}
       {...otherProps}
     >
       {children}
@@ -130,7 +130,7 @@ export default function Box({
           bottom: 0,
           justifyContent: centerY && 'center'
         }}
-        {...rootElement_view}
+        {...rootProps_view}
       >
         {content}
       </View>

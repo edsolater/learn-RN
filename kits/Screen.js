@@ -17,33 +17,33 @@ export default function Screen({
   Navbar,
 
   // View相关
-  rootElementStyle_view,
-  rootElement_view,
-  
+  rootStyle_view,
+  rootProps_view,
+
   // StatusBar相关
   screenBackgroundColor = defaultStyle.backgroundColor,
   statusBarIconTheme = defaultStyle.statusBarIconTheme,
-  rootElementStyle_statusBar,
-  rootElement_statusBar,
+  rootStyle_statusBar,
+  rootProps_statusBar,
 
   // ScrollView相关
-  rootElementStyle_scrollView,
-  rootElement_scrollView,
-
+  style,
+  rootStyle_scrollView = style,
+  rootProps_scrollView
 }) {
   return (
-    <View style={{ flex: 1, ...rootElementStyle_view }} {...rootElement_view}>
+    <View style={{ flex: 1, ...rootStyle_view }} {...rootProps_view}>
       <StatusBar
         barStyle={`${statusBarIconTheme}-content`}
-        style={{ ...rootElementStyle_statusBar }}
-        {...rootElement_statusBar}
+        style={{ ...rootStyle_statusBar }}
+        {...rootProps_statusBar}
       />
       <ScrollView
         style={{
           backgroundColor: screenBackgroundColor,
-          ...rootElementStyle_scrollView
+          ...rootStyle_scrollView
         }}
-        {...rootElement_scrollView}
+        {...rootProps_scrollView}
       >
         {children}
       </ScrollView>

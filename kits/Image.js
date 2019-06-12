@@ -18,8 +18,8 @@ export default function MyImage({
   // Touchable
   onPress,
   type = 'opacity',
-  rootElementStyle_touchable,
-  rootElement_touchable,
+  rootStyle_touchable,
+  rootProps_touchable,
 
   // Image
   source,
@@ -27,13 +27,14 @@ export default function MyImage({
   size,
   width,
   height,
-  rootElementStyle_image,
-  rootElement_image,
+  style,
+  rootStyle_image = style,
+  rootProps_image,
 
   // Box
   boxColor,
-  rootElementStyle_Box, // 为了有代码提示功能
-  rootElement_Box, // 为了有代码提示功能
+  rootStyle_Box, // 为了有代码提示功能
+  rootProps_Box, // 为了有代码提示功能
   ...otherProps
 }) {
   /**
@@ -52,18 +53,18 @@ export default function MyImage({
     <Box
       width={width} // 占位尺寸
       height={height} // 占位尺寸
-      rootElementStyle_view={{
-        ...rootElementStyle_Box
+      rootStyle_view={{
+        ...rootStyle_Box
       }}
-      rootElement_view={rootElement_Box}
+      rootProps_view={rootProps_Box}
       boxColor={!source && defaultStyle.boxColor}
       noBoxcolor={source}
       {...otherProps}
     >
       <ImageTouchEffect
         onPress={onPress}
-        style={{ ...rootElementStyle_touchable }}
-        {...rootElement_touchable}
+        style={{ ...rootStyle_touchable }}
+        {...rootProps_touchable}
       >
         <Image
           source={source}
@@ -71,9 +72,9 @@ export default function MyImage({
             ...(width ? { width: width } : {}),
             ...(height ? { height: height } : {}),
             resizeMode: mode,
-            ...rootElementStyle_image
+            ...rootStyle_image
           }}
-          {...rootElement_image}
+          {...rootProps_image}
         />
       </ImageTouchEffect>
     </Box>
