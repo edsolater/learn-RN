@@ -20,7 +20,7 @@ export default function KitIcon({
 }) {
   return (
     <Image
-      circle={!source || !rect || circle}
+      circle={!rect || circle || !source}
       source={source}
       defaultSize={defaultSize || defaultStyle.kitSize}
       defaultColor={defaultColor || defaultStyle.kitColor}

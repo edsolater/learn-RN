@@ -1,5 +1,5 @@
 import React from 'react'
-import { Icon, Board } from '../../kits'
+import { Icon, Board, Avatar } from '../../kits'
 
 const images = [
   {
@@ -50,6 +50,7 @@ export default function This({ navigation }) {
         />
       ))}
       <Icon defaultColor="red" />
+      <Avatar />
     </Board>
   )
 }

@@ -9,13 +9,16 @@ export default {
   kitSize: {
     Icon: 48,
     Text: [, 112],
-    Image: [200, 100]
+    Image: [200, 100],
+    Avatar: 100
   },
   kitColor: {
-    Screen: 'hsl(0, 100%, 100%)',
+    Screen: 'hsl(0, 100%, 98%)',
+    Board: 'hsl(0, 100%, 100%)',
     Box: 'hsla(208, 100%, 70%, 0.9)',
     Text: 'hsla(150, 100%, 50%, 0.78)',
-    Image: 'hsl(0, 0%, 90%)',
-    Icon: 'hsl(0, 0%, 93%)'
+    Image: 'hsl(0, 0%, 70%)',
+    Icon: 'hsl(0, 0%, 80%)',
+    Avatar:'hsl(0, 0%, 93%)'
   }
 }
