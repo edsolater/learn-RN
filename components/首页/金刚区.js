@@ -39,10 +39,12 @@ export default function This({ navigation }) {
           source={source}
           onPress={() => navigation.navigate(destination)}
           center_image
-          center_imageContent
-          round_image={4}
-          width={80}
-          // mode='stretch'
+          round={40}
+          size={80}
+          rootElementStyle_Box={{
+            width: 20
+          }}
+          mode="stretch"
         />
         // <TouchableOpacity
         //   key={name}

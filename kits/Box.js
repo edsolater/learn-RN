@@ -14,9 +14,9 @@ export default function Box({
 
   // 尺寸、位置
   size, // 快捷属性
-  location, // 快捷属性
   width,
   height,
+  location, // 快捷属性
   top,
   right,
   bottom,
@@ -29,6 +29,7 @@ export default function Box({
   elevation, //Android 设置阴影的
 
   // 快速开启某些特性
+  noClipping,
   noBoxcolor,
   absolute,
   start, //组件x轴位置：最左
@@ -46,25 +47,7 @@ export default function Box({
   /**
    * ---------------- 工具函数（可优化） ----------------
    */
-  function fix(value_input) {
-    const value_array = Array.of(value_input).flat()
-    switch (value_array.length) {
-      case 1:
-        return value_array
-          .concat(value_array)
-          .concat(value_array)
-          .concat(value_array)
-      case 2:
-        return value_array.concat(value_array)
-      case 3:
-        return value_array.concat(value_array)
-      default:
-        return value_array
-    }
-  }
-  function merge(arrayA, arrayB) {
-    return arrayB.map((elementB, index) => arrayA[index] || elementB)
-  }
+  // 暂无
 
   /**
    * ---------------- 处理 props (可优化) ----------------
@@ -82,34 +65,39 @@ export default function Box({
   if (centerY) top = bottom = undefined
 
   // 处理尺寸信息
-  size = merge(fix(size), [width, height])
+  size = Array.of(size).flat()
+  width = width || size[0] || size[0]
+  height = height || size[1] || size[0]
 
   // 处理位置信息（相对）
-  location = merge(fix(location), [top, right, bottom, left])
+  location = Array.of(location).flat()
+  top = top || location[0]
+  right = right || location[1] || location[0]
+  bottom = bottom || location[2] || top || location[0]
+  left = left || location[3] || right || location[0]
 
   /**
    * ---------------- 返回组件 ----------------
    */
   // <Box> 的核心包裹器，默认状态是无法（逻辑上也不能）y轴居中的
-
   const content = (
     <View
       style={{
         flex: (typeof flex === 'number' && flex) || (flex && 1),
-        width: size[0],
-        height: size[1],
+        width,
+        height,
         ...(absolute
           ? {
-              top: location[0],
-              right: location[1],
-              bottom: location[2],
-              left: location[3]
+              top: top,
+              right: right,
+              bottom: bottom,
+              left: left
             }
           : {
-              marginTop: location[0],
-              marginRight: location[1],
-              marginBottom: location[2],
-              marginLeft: location[3]
+              marginTop: top,
+              marginRight: right,
+              marginBottom: bottom,
+              marginLeft: left
             }),
         alignSelf:
           (start && 'flex-start') ||
@@ -119,6 +107,7 @@ export default function Box({
         backgroundColor: boxColor || defaultStyle.boxColor,
         elevation,
         opacity,
+        overflow: noClipping || 'hidden',
         ...rootElementStyle_view
       }}
       {...rootElement_view}

@@ -18,8 +18,7 @@ export default function Textbox({
   fontSize,
   type, // 实际上规定了 fontSize
   center_text,
-  style,
-  rootElementStyle_Text = style,
+  rootElementStyle_Text,
   rootElement_text,
 
   // textbox 字体盒子相关设定
@@ -32,8 +31,11 @@ export default function Textbox({
   center_Box = center, //  center_Box 是为了和 center_text 保持对称性而存在
   rootElementStyle_Box,
   rootElement_Box,
-  ...otherProps_Box
+  ...otherProps
 }) {
+  /**
+   * ---------------- 返回组件 ----------------
+   */
   return (
     <Box
       width={
@@ -44,9 +46,9 @@ export default function Textbox({
       boxColor={boxColor || defaultStyle.boxColor}
       noBoxcolor={children}
       center={center_Box}
-      style={{ ...rootElementStyle_Box }}
-      {...otherProps_Box}
+      rootElementStyle_view={rootElementStyle_Box}
       rootElement_view={rootElement_Box}
+      {...otherProps}
     >
       <Text
         style={{
