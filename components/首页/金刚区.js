@@ -1,5 +1,5 @@
 import React from 'react'
-import { Image, Box, Icon } from '../../kits'
+import { Icon, Board } from '../../kits'
 
 const images = [
   {
@@ -31,7 +31,7 @@ const images = [
 
 export default function This({ navigation }) {
   return (
-    <Box
+    <Board
       style={{
         justifyContent: 'flex-start',
         alignItems: 'center',
@@ -49,7 +49,7 @@ export default function This({ navigation }) {
           mode="stretch"
         />
       ))}
-      <Icon defaultColor='red'/>
-    </Box>
+      <Icon defaultColor="red" />
+    </Board>
   )
 }

@@ -7,26 +7,6 @@ const defaultStyle = {
   kitSize: GlobalStyle.kitSize.Icon
 }
 
-export default function KitBoard({
-  defaultSize,
-  defaultColor,
-  children,
-
-  circle,
-  rect,
-  source,
-  rootProps,
-  rootProps_Image = rootProps,
-  ...otherProps
-}) {
-  return (
-    <Image
-      circle={!source || !rect || circle}
-      source={source}
-      defaultSize={defaultSize || defaultStyle.kitSize}
-      defaultColor={defaultColor || defaultStyle.kitColor}
-      rootProps_Box={rootProps_Image}
-      {...otherProps}
-    />
-  )
+export default function KitBoard({ ...otherProps }) {
+  return <Box noBoxcolor {...otherProps} />
 }
