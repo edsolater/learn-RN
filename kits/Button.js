@@ -62,8 +62,8 @@ export default function KitButton({
         <Box width={36}/>
       </View> */}
       <Text
-        center
-        absolute
+        alignCenter
+        alignMiddle
         fontColor={fontColor || thisKitSkeleton.fontColor}
         debugMode={debugMode}
       >

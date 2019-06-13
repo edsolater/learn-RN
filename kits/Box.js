@@ -37,11 +37,12 @@ export default function KitBox({
   clipping,
   noBoxcolor,
   absolute, //TODO: 要把这个通过是否Y轴布局智能化
-  alignLeft, //组件x轴位置：最左
-  center, //组件x轴位置：居中（必要的话也会y轴居中）
-  centerX,
-  centerY,
+  alignTop,
   alignRight, //组件x轴位置：最右
+  alignBottom,
+  alignLeft, //组件x轴位置：最左
+  alignCenter,
+  alignMiddle,
   flex, // 可以的话，纵向占满
 
   // 元接口
@@ -68,25 +69,24 @@ export default function KitBox({
   /**
    * ---------------- 处理 props (可优化) ----------------
    */
-  // center 代表x轴、y轴都居中
-  if (center) centerX = centerY = true
   // 左右的设定会干扰到居中，故x轴居中时左右设定无效
-  if (centerX) left = right = undefined
+  if (alignCenter) left = right = undefined
   // 上下的设定会干扰到居中，故y轴居中时上下设定无效
-  if (centerY) top = bottom = undefined
+  if (alignMiddle) top = bottom = undefined
 
-  // 处理 skeleton
+  // 决定在什么时候启用 skeleton
   skeleton = !debugMode && hideSkeleton ? {} : skeleton || thisKitSkeleton || {}
-
-  // 处理尺寸信息
+  // 设定的size与默认的合并
   size = merge(merge([width, height], size), Array.of(skeleton.size).flat())
-
-  // 处理相对位置
+  // Kit 不应该有默认 location，会增加复杂度的
   location = merge([top, right, bottom, left], location)
+  // 启用Y轴方向的定位时，自动 absoluate
+  absolute = absolute || alignTop || alignBottom || alignMiddle
 
   /**
    * ---------------- 返回组件 ----------------
    */
+  console.log('alignCenter: ', alignCenter)
   // <Box> 的核心包裹器，默认状态是无法（逻辑上也不能）y轴居中的
   const content = (
     <View
@@ -109,7 +109,7 @@ export default function KitBox({
             }),
         alignSelf:
           (alignLeft && 'flex-start') ||
-          (centerX && 'center') ||
+          (alignCenter && 'center') ||
           (alignRight && 'flex-end'),
         borderRadius: round || skeleton.round,
         backgroundColor:
@@ -126,7 +126,6 @@ export default function KitBox({
     </View>
   )
   //如果是绝对定位，需要再包一层外壳以启用y轴居中
-  console.log('absolute: ', absolute)
   if (absolute) {
     return (
       <View
@@ -137,7 +136,7 @@ export default function KitBox({
           left: 0,
           right: 0,
           bottom: 0,
-          justifyContent: centerY && 'center'
+          justifyContent: alignMiddle && 'center'
         }}
         {...rootProps_view}
       >

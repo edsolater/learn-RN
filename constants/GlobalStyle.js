@@ -11,7 +11,7 @@ const font = {
 }
 const skeleton = {
   Screen: {
-    // 不应该有location 会增加复杂度的
+    // 不应该有默认 location，会增加复杂度的
     statusBarIconTheme: 'light',
     boxColor: 'hsl(0, 100%, 98%)'
   },
@@ -20,7 +20,7 @@ const skeleton = {
   },
   Box: {
     size: [40, 20],
-    boxColor: 'hsla(208, 100%, 70%, 0.3)'
+    boxColor: 'hsla(208, 100%, 70%, 0.1)'
   },
   Text: {
     size: [112, undefined], // 空值不能改变 length，要显示地设定 undefined
