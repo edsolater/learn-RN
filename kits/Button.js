@@ -1,18 +1,17 @@
 import React from 'react'
-import { Text } from 'react-native'
 import Box from './Box'
+import { View } from 'react-native'
+import Text from './Text'
 import { GlobalStyle } from '../constants'
 
 /**
  * ---------------- 组件的可自定义配置 ----------------
  */
 const defaultStyle = {
-  // kitSize: GlobalStyle.kitSize.Button,
-  kitSize: GlobalStyle.skeleton.Button.size,
   fontSize: (type = 'main') => GlobalStyle.fontSize[type] || 14,
-  kitColor: GlobalStyle.skeleton.Button.boxColor,
-  fontColor: GlobalStyle.font.main.color
+  fontColor: GlobalStyle.font.main.fontColor
 }
+const thisKitSkeleton = GlobalStyle.skeleton.Button
 
 export default function KitButton({
   defaultSize,
@@ -23,11 +22,12 @@ export default function KitButton({
   // text 字体相关设定
   fontColor,
   fontSize,
+  debugMode,
   type, // 实际上规定了 fontSize
   center_text,
   style,
   rootStyle_Text = style,
-  rootProps_text,
+  rootProps_Text,
 
   // Box 相关设定
   width,
@@ -53,20 +53,19 @@ export default function KitButton({
       boxColor={boxColor}
       noBoxcolor={children}
       center={center_Box}
-      defaultSize={defaultSize || defaultStyle.kitSize}
-      defaultColor={defaultColor || defaultStyle.kitColor}
+      skeleton={thisKitSkeleton}
       rootStyle_view={rootStyle_Box}
       rootProps_view={rootProps_Box}
       {...otherProps}
     >
+      {/* <View style={{ alignSelf: 'center', width: 44,height:undefined, backgroundColor: 'gold' }}>
+        <Box width={36}/>
+      </View> */}
       <Text
-        style={{
-          fontSize: fontSize || defaultStyle.fontSize(type),
-          color: fontColor || defaultStyle.fontColor,
-          textAlign: center_text && 'center',
-          ...rootStyle_Text
-        }}
-        {...rootProps_text}
+        center
+        absolute
+        fontColor={fontColor || thisKitSkeleton.fontColor}
+        debugMode={debugMode}
       >
         {text || children}
       </Text>

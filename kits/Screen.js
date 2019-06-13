@@ -5,10 +5,7 @@ import { GlobalStyle } from '../constants'
 /**
  * ---------------- 组件的可自定义配置 ----------------
  */
-const defaultStyle = {
-  backgroundColor: GlobalStyle.kitColor.ScreenBackground,
-  statusBarIconTheme: 'light'
-}
+const thisKitSkeleton = GlobalStyle.skeleton.Screen
 
 export default function KitScreen({
   children,
@@ -21,8 +18,8 @@ export default function KitScreen({
   rootProps_view,
 
   // StatusBar相关
-  screenBackgroundColor = defaultStyle.backgroundColor,
-  statusBarIconTheme = defaultStyle.statusBarIconTheme,
+  boxColor = thisKitSkeleton.boxColor,
+  statusBarIconTheme = thisKitSkeleton.statusBarIconTheme,
   rootStyle_statusBar,
   rootProps_statusBar,
 
@@ -40,7 +37,7 @@ export default function KitScreen({
       />
       <ScrollView
         style={{
-          backgroundColor: screenBackgroundColor,
+          backgroundColor: boxColor,
           ...rootStyle_scrollView
         }}
         {...rootProps_scrollView}

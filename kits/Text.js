@@ -7,15 +7,12 @@ import { GlobalStyle } from '../constants'
  * ---------------- 组件的可自定义配置 ----------------
  */
 const defaultStyle = {
-  kitSize: GlobalStyle.kitSize.Text,
   fontSize: (type = 'main') => GlobalStyle.fontSize[type] || 14,
-  kitColor: GlobalStyle.skeleton.Text.boxColor,
-  fontColor: GlobalStyle.font.main.color
+  fontColor: GlobalStyle.font.main.fontColor
 }
+const thisKitSkeleton = GlobalStyle.skeleton.Text
 
 export default function KitText({
-  defaultSize,
-  defaultColor,
   children,
   text,
 
@@ -23,7 +20,6 @@ export default function KitText({
   fontColor,
   fontSize,
   type, // 实际上规定了 fontSize
-  center_text,
   style,
   rootStyle_Text = style,
   rootProps_text,
@@ -31,11 +27,6 @@ export default function KitText({
   // Box 相关设定
   width,
   wordNum, // 实际上与 fontSize 联合规定了 width
-  backgroundColor,
-  background = backgroundColor,
-  boxColor = background,
-  center,
-  center_Box = center, //  center_Box 是为了和 center_text 保持对称性而存在
   rootStyle_Box,
   rootProps_Box,
   ...otherProps
@@ -47,14 +38,11 @@ export default function KitText({
     <Box
       width={
         width ||
-        (wordNum && wordNum * (fontSize || defaultStyle.fontSize(type)))
+        (wordNum && wordNum * (fontSize || defaultStyle.fontSize(type))) ||
+        (thisKitSkeleton && thisKitSkeleton.size && thisKitSkeleton.size[0])
       }
-      height={fontSize || defaultStyle.fontSize(type)}
-      boxColor={boxColor}
-      noBoxcolor={children}
-      center={center_Box}
-      defaultSize={defaultSize || defaultStyle.kitSize}
-      defaultColor={defaultColor || defaultStyle.kitColor}
+      hideSkeleton={text || children}
+      skeleton={thisKitSkeleton}
       rootStyle_view={rootStyle_Box}
       rootProps_view={rootProps_Box}
       {...otherProps}
@@ -63,7 +51,7 @@ export default function KitText({
         style={{
           fontSize: fontSize || defaultStyle.fontSize(type),
           color: fontColor || defaultStyle.fontColor,
-          textAlign: center_text && 'center',
+          textAlign: 'center', // 文字永远居中与文本框
           ...rootStyle_Text
         }}
         {...rootProps_text}

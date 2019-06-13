@@ -5,17 +5,15 @@ import { GlobalStyle } from '../constants'
 /**
  * ---------------- 组件的可自定义配置 ----------------
  */
-const defaultStyle = {
-  kitColor: GlobalStyle.skeleton.Box.boxColor
-}
+const thisKitSkeleton = GlobalStyle.skeleton.Box
 
 /**
  * 此乃最根本的自定义kit，理应逻辑非常复杂，
  */
 export default function KitBox({
   children,
-  defaultSize, //TODO: 把默认的设置全部统一在 skeleton 参数中，且只把判断逻辑放在 <Box> 中
-  defaultColor,
+  skeleton,
+  debugMode,
 
   // 尺寸、位置
   size, // 快捷属性
@@ -34,15 +32,16 @@ export default function KitBox({
   elevation, //Android 设置阴影的
 
   // 快速开启某些特性
+  hideSkeleton,
   noClipping,
   clipping,
   noBoxcolor,
-  absolute,
-  start, //组件x轴位置：最左
+  absolute, //TODO: 要把这个通过是否Y轴布局智能化
+  alignLeft, //组件x轴位置：最左
   center, //组件x轴位置：居中（必要的话也会y轴居中）
   centerX,
   centerY,
-  end, //组件x轴位置：最右
+  alignRight, //组件x轴位置：最右
   flex, // 可以的话，纵向占满
 
   // 元接口
@@ -54,7 +53,17 @@ export default function KitBox({
   /**
    * ---------------- 工具函数（可优化） ----------------
    */
-  // 暂无
+  function merge(detailResult, shortcut) {
+    shortcut = Array.of(shortcut).flat()
+    function get(array, index) {
+      const length = array.length
+      while (index + 1 > length) {
+        index -= length
+      }
+      return array[index]
+    }
+    return detailResult.map((value, index) => value || get(shortcut, index))
+  }
 
   /**
    * ---------------- 处理 props (可优化) ----------------
@@ -66,19 +75,14 @@ export default function KitBox({
   // 上下的设定会干扰到居中，故y轴居中时上下设定无效
   if (centerY) top = bottom = undefined
 
-  // 处理尺寸信息
-  size = Array.of(size).flat()
-  defaultSize = Array.of(defaultSize).flat()
-  size = [size[0] || defaultSize[0], size[1] || defaultSize[1]] //考虑到可能会有传来默认的尺寸信息
-  width = width || size[0]
-  height = height || size[1] || size[0]
+  // 处理 skeleton
+  skeleton = !debugMode && hideSkeleton ? {} : skeleton || thisKitSkeleton || {}
 
-  // 处理位置信息（相对）
-  location = Array.of(location).flat()
-  top = top || location[0]
-  right = right || location[1] || location[0]
-  bottom = bottom || location[2] || top || location[0]
-  left = left || location[3] || right || location[0]
+  // 处理尺寸信息
+  size = merge(merge([width, height], size), Array.of(skeleton.size).flat())
+
+  // 处理相对位置
+  location = merge([top, right, bottom, left], location)
 
   /**
    * ---------------- 返回组件 ----------------
@@ -88,31 +92,28 @@ export default function KitBox({
     <View
       style={{
         flex: (typeof flex === 'number' && flex) || (flex && 1),
-        width,
-        height,
+        width: size[0],
+        height: size[1],
         ...(absolute
           ? {
-              top: top,
-              right: right,
-              bottom: bottom,
-              left: left
+              top: location[0],
+              right: location[1],
+              bottom: location[2],
+              left: location[3]
             }
           : {
-              marginTop: top,
-              marginRight: right,
-              marginBottom: bottom,
-              marginLeft: left
+              marginTop: location[0],
+              marginRight: location[1],
+              marginBottom: location[2],
+              marginLeft: location[3]
             }),
         alignSelf:
-          (start && 'flex-start') ||
+          (alignLeft && 'flex-start') ||
           (centerX && 'center') ||
-          (end && 'flex-end'),
-        borderRadius: round,
+          (alignRight && 'flex-end'),
+        borderRadius: round || skeleton.round,
         backgroundColor:
-          (noBoxcolor && 'transparent') ||
-          boxColor ||
-          defaultColor ||
-          defaultStyle.kitColor,
+          (noBoxcolor && 'transparent') || boxColor || skeleton.boxColor,
         elevation,
         opacity,
         overflow: (noClipping && 'visible') || (clipping && 'hidden'),
@@ -125,6 +126,7 @@ export default function KitBox({
     </View>
   )
   //如果是绝对定位，需要再包一层外壳以启用y轴居中
+  console.log('absolute: ', absolute)
   if (absolute) {
     return (
       <View

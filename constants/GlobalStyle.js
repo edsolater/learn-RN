@@ -6,45 +6,41 @@ const height = Dimensions.get('window').height
 const font = {
   main: {
     fontSize: 14,
-    color: 'hsla(238, 21%, 10%, 0.78)'
+    fontColor: 'hsla(238, 21%, 10%, 0.78)'
   }
 }
 const skeleton = {
   Screen: {
-    bottom: 4,
+    // 不应该有location 会增加复杂度的
+    statusBarIconTheme: 'light',
     boxColor: 'hsl(0, 100%, 98%)'
   },
   Board: {
-    bottom: 4,
     boxColor: 'hsl(0, 100%, 100%)'
   },
   Box: {
-    bottom: 4,
-    boxColor: 'hsla(208, 100%, 70%, 0.9)'
+    size: [40, 20],
+    boxColor: 'hsla(208, 100%, 70%, 0.3)'
   },
   Text: {
-    bottom: 4,
-    size: [, 112],
+    size: [112, undefined], // 空值不能改变 length，要显示地设定 undefined
     boxColor: 'hsla(150, 100%, 50%, 0.78)'
   },
   Image: {
-    bottom: 4,
     size: [200, 100],
     boxColor: 'hsl(0, 0%, 70%)'
   },
   Icon: {
-    bottom: 4,
     size: 48,
     boxColor: 'hsl(0, 0%, 80%)'
   },
   Avatar: {
-    bottom: 4,
     size: 100,
     boxColor: 'hsl(0, 0%, 93%)'
   },
   Button: {
-    bottom: 4,
     size: [124, 36],
+    fontColor: 'hsl(0, 0%, 100%)',
     boxColor: 'hsl(0, 0%, 30%)'
   }
 }

@@ -2,17 +2,16 @@ import React from 'react'
 import Icon from './Icon'
 import { GlobalStyle } from '../constants'
 
-const defaultStyle = {
-  kitColor: GlobalStyle.skeleton.Avatar.boxColor,
-  kitSize: GlobalStyle.skeleton.Avatar.size
-}
+const thisKitSkeleton = GlobalStyle.skeleton.Avatar
 
-export default function KitAvatar({ ...otherProps }) {
+export default function KitAvatar({ source,...otherProps }) {
   return (
     <Icon
       circle
-      defaultSize={defaultStyle.kitSize}
-      defaultColor={defaultStyle.kitColor}
+      noClipping={source}
+      skeleton={thisKitSkeleton}
+
+      source={source}
       {...otherProps}
     />
   )

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Icon, Board, Avatar, Text, Button } from '../../kits'
+import { Icon, Board, Avatar, Text, Button,Image } from '../../kits'
 
 const images = [
   {
@@ -39,19 +39,18 @@ export default function This({ navigation }) {
       }}
     >
       {images.map(({ source, name, destination }) => (
-        <Icon
+        <Image
           key={name}
           source={source}
           onPress={() => navigation.navigate(destination)}
-          round={4}
           size={24}
-          boxColor="#red"
           mode="stretch"
         />
       ))}
-      <Icon defaultColor="red" />
-      <Avatar />
-      <Button />
+      <Image  />
+      <Icon boxColor='red'/>
+      <Avatar hideSkeleton/>
+      <Button debugMode text='hello'/>
     </Board>
   )
 }

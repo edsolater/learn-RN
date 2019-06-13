@@ -6,19 +6,13 @@ import { GlobalStyle } from '../constants'
 /**
  * ---------------- 组件的可自定义配置 ----------------
  */
-const defaultStyle = {
-  kitSize: GlobalStyle.kitSize.Image,
-  kitColor: GlobalStyle.kitColor.Image
-}
+const thisKitSkeleton = GlobalStyle.skeleton.Image
 const touchEffects = {
   opacity: TouchableOpacity,
   highlight: TouchableHighlight
 }
 
 export default function KitImage({
-  defaultSize,
-  defaultColor,
-
   // Touchable
   onPress,
   type = 'opacity',
@@ -38,7 +32,6 @@ export default function KitImage({
   // Box
   round, // 权重在 circle之下
   circle,
-  boxColor,
   rootStyle_Box, // 为了有代码提示功能
   rootProps_Box, // 为了有代码提示功能
   ...otherProps
@@ -59,20 +52,18 @@ export default function KitImage({
     <Box
       width={width}
       height={height}
-      size={size}
+      size={size[0]} // 需要再把 size 拆开来
       round={(circle && 10000) || round}
-      boxColor={boxColor}
-      noBoxcolor={source}
+      hideSkeleton={source}
       clipping
-      defaultSize={defaultSize || defaultStyle.kitSize}
-      defaultColor={defaultColor || defaultStyle.kitColor}
-      rootStyle_view={{ ...rootStyle_Box }}
+      skeleton={thisKitSkeleton}
+      rootStyle_view={rootStyle_Box}
       rootProps_view={rootProps_Box}
       {...otherProps}
     >
       <ImageTouchEffect
         onPress={onPress}
-        style={{ ...rootStyle_touchable }}
+        style={rootStyle_touchable}
         {...rootProps_touchable}
       >
         <Image
