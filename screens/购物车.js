@@ -16,7 +16,7 @@ import 物流信息 from '../components/我/物流信息'
   })
 
 
-function Component({ navigation, user = {} }) {
+export default function 购物车({ navigation, user = {} }) {
   return (
     <View style={style.box}>
       <ScrollView
@@ -33,7 +33,7 @@ function Component({ navigation, user = {} }) {
     </View>
   )
 }
-Component.navigationOptions = function({ navigation, navigationOptions }) {
+购物车.navigationOptions = function({ navigation, navigationOptions }) {
   return {
     title: '我'
     // headerStyle: {
@@ -42,5 +42,4 @@ Component.navigationOptions = function({ navigation, navigationOptions }) {
     // headerTintColor: navigationOptions.headerStyle.backgroundColor
   }
 }
-export default Component
 

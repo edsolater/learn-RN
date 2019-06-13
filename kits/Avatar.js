@@ -3,11 +3,11 @@ import Icon from './Icon'
 import { GlobalStyle } from '../constants'
 
 const defaultStyle = {
-  kitColor: GlobalStyle.kitColor.Avatar,
-  kitSize: GlobalStyle.kitSize.Avatar
+  kitColor: GlobalStyle.skeleton.Avatar.boxColor,
+  kitSize: GlobalStyle.skeleton.Avatar.size
 }
 
-export default function KitBoard({ ...otherProps }) {
+export default function KitAvatar({ ...otherProps }) {
   return (
     <Icon
       circle

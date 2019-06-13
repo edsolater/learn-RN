@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, ScrollView, View, Image, StatusBar } from 'react-native'
+import { StyleSheet } from 'react-native'
 import { Screen } from '../kits'
 
 import 底部导航栏 from '../components/底部导航栏'
@@ -15,7 +15,7 @@ const style = StyleSheet.create({
   }
 })
 
-function 首页({ navigation }) {
+export default function 首页({ navigation }) {
   return (
     <Screen Navbar={<底部导航栏 navigation={navigation} />}>
       <搜索栏 navigation={navigation} />
@@ -34,4 +34,4 @@ function 首页({ navigation }) {
   },
   headerTintColor: '#fff'
 })
-export default 首页
+

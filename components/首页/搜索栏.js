@@ -11,7 +11,7 @@ export default function 搜索栏({ navigation }) {
         center
         boxColor="red"
       >
-        搜索栏这里有八字
+        搜索栏这里有九个字
       </Text>
     </Box>
   )

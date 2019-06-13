@@ -3,8 +3,8 @@ import Image from './Image'
 import { GlobalStyle } from '../constants'
 
 const defaultStyle = {
-  kitColor: GlobalStyle.kitColor.Icon,
-  kitSize: GlobalStyle.kitSize.Icon
+  kitColor: GlobalStyle.skeleton.Icon.boxColor,
+  kitSize: GlobalStyle.skeleton.Icon.size
 }
 
 export default function KitIcon({

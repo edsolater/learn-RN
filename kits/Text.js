@@ -9,8 +9,8 @@ import { GlobalStyle } from '../constants'
 const defaultStyle = {
   kitSize: GlobalStyle.kitSize.Text,
   fontSize: (type = 'main') => GlobalStyle.fontSize[type] || 14,
-  kitColor: GlobalStyle.kitColor.Text,
-  fontColor: GlobalStyle.fontColor.main
+  kitColor: GlobalStyle.skeleton.Text.boxColor,
+  fontColor: GlobalStyle.font.main.color
 }
 
 export default function KitText({
@@ -29,8 +29,8 @@ export default function KitText({
   rootProps_text,
 
   // Box 相关设定
-  boxWidth,
-  wordNum, // 实际上与 fontSize 联合规定了 boxWidth
+  width,
+  wordNum, // 实际上与 fontSize 联合规定了 width
   backgroundColor,
   background = backgroundColor,
   boxColor = background,
@@ -46,9 +46,10 @@ export default function KitText({
   return (
     <Box
       width={
-        boxWidth ||
+        width ||
         (wordNum && wordNum * (fontSize || defaultStyle.fontSize(type)))
       }
+      height={fontSize || defaultStyle.fontSize(type)}
       boxColor={boxColor}
       noBoxcolor={children}
       center={center_Box}

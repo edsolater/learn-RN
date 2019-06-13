@@ -6,7 +6,7 @@ import { GlobalStyle } from '../constants'
  * ---------------- 组件的可自定义配置 ----------------
  */
 const defaultStyle = {
-  kitColor: GlobalStyle.kitColor.Box
+  kitColor: GlobalStyle.skeleton.Box.boxColor
 }
 
 /**
@@ -14,7 +14,7 @@ const defaultStyle = {
  */
 export default function KitBox({
   children,
-  defaultSize,
+  defaultSize, //TODO: 把默认的设置全部统一在 skeleton 参数中，且只把判断逻辑放在 <Box> 中
   defaultColor,
 
   // 尺寸、位置

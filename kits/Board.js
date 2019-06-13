@@ -3,7 +3,7 @@ import Box from './Box'
 import { GlobalStyle } from '../constants'
 
 const defaultStyle = {
-  kitColor: GlobalStyle.kitColor.Board
+  kitColor: GlobalStyle.skeleton.Board.boxColor
 }
 
 export default function KitBoard({ ...otherProps }) {
