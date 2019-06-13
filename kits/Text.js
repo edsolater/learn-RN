@@ -13,13 +13,12 @@ const defaultStyle = {
 const thisKitSkeleton = GlobalStyle.skeleton.Text
 
 export default function KitText({
-  children,
   text,
 
   // text 字体相关设定
   fontColor,
   fontSize,
-  type, // 实际上规定了 fontSize
+  fontType, // 实际上规定了 fontSize
   style,
   rootStyle_Text = style,
   rootProps_text,
@@ -38,10 +37,10 @@ export default function KitText({
     <Box
       width={
         width ||
-        (wordNum && wordNum * (fontSize || defaultStyle.fontSize(type))) ||
+        (wordNum && wordNum * (fontSize || defaultStyle.fontSize(fontType))) ||
         (thisKitSkeleton && thisKitSkeleton.size && thisKitSkeleton.size[0])
       }
-      hideSkeleton={text || children}
+      hideSkeleton={text}
       skeleton={thisKitSkeleton}
       rootStyle_view={rootStyle_Box}
       rootProps_view={rootProps_Box}
@@ -49,14 +48,14 @@ export default function KitText({
     >
       <Text
         style={{
-          fontSize: fontSize || defaultStyle.fontSize(type),
+          fontSize: fontSize || defaultStyle.fontSize(fontType),
           color: fontColor || defaultStyle.fontColor,
           textAlign: 'center', // 文字永远居中与文本框
           ...rootStyle_Text
         }}
         {...rootProps_text}
       >
-        {text || children}
+        {text}
       </Text>
     </Box>
   )

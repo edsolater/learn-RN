@@ -7,6 +7,10 @@ const font = {
   main: {
     fontSize: 14,
     fontColor: 'hsla(238, 21%, 10%, 0.78)'
+  },
+  button_normal: {
+    fontSize: 24,
+    fontColor: 'hsl(0, 0%, 100%)'
   }
 }
 const skeleton = {
@@ -39,9 +43,13 @@ const skeleton = {
     boxColor: 'hsl(0, 0%, 93%)'
   },
   Button: {
-    size: [124, 36],
-    fontColor: 'hsl(0, 0%, 100%)',
+    round: 8,
+    size: [96, 36],
     boxColor: 'hsl(0, 0%, 30%)'
+  },
+  ButtonIcon: {
+    size: 24,
+    boxColor: 'hsl(0, 0%, 80%)'
   }
 }
 export default {

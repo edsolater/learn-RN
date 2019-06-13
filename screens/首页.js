@@ -17,7 +17,7 @@ const style = StyleSheet.create({
 
 export default function 首页({ navigation }) {
   return (
-    <Screen Navbar={<底部导航栏 navigation={navigation} />}>
+    <Screen Navbar={()=> <底部导航栏 navigation={navigation} />}>
       <搜索栏 navigation={navigation} />
       <Banner navigation={navigation} />
       <金刚区 navigation={navigation} />

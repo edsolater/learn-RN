@@ -86,7 +86,6 @@ export default function KitBox({
   /**
    * ---------------- 返回组件 ----------------
    */
-  console.log('alignCenter: ', alignCenter)
   // <Box> 的核心包裹器，默认状态是无法（逻辑上也不能）y轴居中的
   const content = (
     <View

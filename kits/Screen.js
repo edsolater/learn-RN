@@ -10,7 +10,7 @@ const thisKitSkeleton = GlobalStyle.skeleton.Screen
 export default function KitScreen({
   children,
 
-  // 被传递的组件
+  // 底部导航栏组件
   Navbar,
 
   // View相关
@@ -44,7 +44,7 @@ export default function KitScreen({
       >
         {children}
       </ScrollView>
-      {Navbar}
+      <Navbar />
     </View>
   )
 }

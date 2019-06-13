@@ -13,14 +13,15 @@ const touchEffects = {
 }
 
 export default function KitImage({
-  // Touchable
+  source,
+
+  // 按钮反馈
   onPress,
-  type = 'opacity',
+  effectType = 'opacity',
   rootStyle_touchable,
   rootProps_touchable,
 
   // Image
-  source,
   mode, // 定义图像相对占位图框的内部位置模式
   size,
   width,
@@ -47,24 +48,24 @@ export default function KitImage({
   /**
    * ---------------- 返回组件 ----------------
    */
-  const ImageTouchEffect = touchEffects[type]
+  const ImageTouchEffect = touchEffects[effectType]
   return (
-    <Box
-      width={width}
-      height={height}
-      size={size[0]} // 需要再把 size 拆开来
-      round={(circle && 10000) || round}
-      hideSkeleton={source}
-      clipping
-      skeleton={thisKitSkeleton}
-      rootStyle_view={rootStyle_Box}
-      rootProps_view={rootProps_Box}
-      {...otherProps}
+    <ImageTouchEffect
+      onPress={onPress}
+      style={rootStyle_touchable}
+      {...rootProps_touchable}
     >
-      <ImageTouchEffect
-        onPress={onPress}
-        style={rootStyle_touchable}
-        {...rootProps_touchable}
+      <Box
+        width={width}
+        height={height}
+        size={size[0]} // 需要再把 size 拆开来
+        round={(circle && 10000) || round}
+        hideSkeleton={source}
+        clipping
+        skeleton={thisKitSkeleton}
+        rootStyle_view={rootStyle_Box}
+        rootProps_view={rootProps_Box}
+        {...otherProps}
       >
         <Image
           source={source}
@@ -76,7 +77,7 @@ export default function KitImage({
           }}
           {...rootProps_image}
         />
-      </ImageTouchEffect>
-    </Box>
+      </Box>
+    </ImageTouchEffect>
   )
 }
