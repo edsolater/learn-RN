@@ -8,7 +8,6 @@ import { GlobalStyle } from '../constants'
 /**
  * ---------------- 组件的可自定义配置 ----------------
  */
-const thisKitFontStyle = (type = 'normal') => GlobalStyle.font[`button_${type}`]
 const thisKitSkeleton = GlobalStyle.skeleton.Button
 const touchEffects = {
   opacity: TouchableOpacity,
@@ -18,25 +17,17 @@ const buttonIconSkeleton = GlobalStyle.skeleton.ButtonIcon
 
 export default function KitButton({
   direction = 'row', //规定内部元素的排布方向
-  text, // 字符串内容
+  text, // 快捷方式字符串内容
+  debugMode,
 
   // 按钮反馈设定
   effectType = 'opacity',
   onPress,
 
-  // text 字体相关设定
-  fontColor,
-  fontSize,
-  fontType, // 实际上规定了 fontSize
-  debugMode,
-  style,
-  rootStyle_Text = style,
-  rootProps_Text,
-
-  // Icon 设定
-  icon,
-  source,
-  gutter,
+  // 完全传递给 <Icon> 组件
+  IconProps,
+  // 完全传递给 <Text> 组件
+  TextProps,
 
   // Box 相关设定
   rootStyle_Box,
@@ -63,20 +54,17 @@ export default function KitButton({
         rootProps_view={rootProps_Box}
         {...otherProps}
       >
-        {icon && (
-          <Icon
-            source={source}
-            right={gutter}
-            skeleton={buttonIconSkeleton}
-            debugMode={debugMode}
-          />
+        {Icon && (
+          <Icon skeleton={buttonIconSkeleton} debugMode={debugMode} {...IconProps} />
         )}
-        {text && (
+        {(text || TextProps) && (
           <Text
-            width={40} // 开发此 Kit 时需要
-            fontColor={fontColor || thisKitFontStyle(fontType).fontColor}
+            width="auto" // 开发此 Kit 时需要
+            fontColor={'white'}
+            fontSize={24}
             debugMode={debugMode}
             text={text}
+            {...TextProps}
           />
         )}
       </Box>

@@ -50,7 +50,11 @@ export default function This({ navigation }) {
       <Image />
       <Icon boxColor="red" />
       <Avatar />
-      <Button icon={{}}  gutter={4} debugMode text="hello" />
+      <Button
+        IconProps={{ right: 4 }}
+        debugMode
+        text="hello"
+      />
     </Board>
   )
 }

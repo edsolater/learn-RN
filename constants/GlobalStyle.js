@@ -8,10 +8,6 @@ const font = {
     fontSize: 14,
     fontColor: 'hsla(238, 21%, 10%, 0.78)'
   },
-  button_normal: {
-    fontSize: 24,
-    fontColor: 'hsl(0, 0%, 100%)'
-  }
 }
 const skeleton = {
   Screen: {
