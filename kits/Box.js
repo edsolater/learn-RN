@@ -1,12 +1,12 @@
 import React from 'react'
-import { View } from 'react-native'
-import { GlobalStyle } from '../constants'
+import { View as Native_View } from 'react-native'
+
+
+// Box 本省不应该有 skeleton
 
 /**
- * ---------------- 组件的可自定义配置 ----------------
+ * ---------------- 返回组件 ----------------
  */
-const thisKitSkeleton = GlobalStyle.skeleton.Box
-
 /**
  * 此乃最根本的自定义kit，理应逻辑非常复杂，
  */
@@ -32,7 +32,7 @@ export default function KitBox({
   elevation, //Android 设置阴影的
 
   // 快速开启某些特性
-  hideSkeleton,
+  noSkeleton,
   noClipping,
   clipping,
   noBoxcolor,
@@ -47,8 +47,6 @@ export default function KitBox({
 
   // 元接口
   style,
-  rootStyle_view = style,
-  rootProps_view,
   ...otherProps
 }) {
   /**
@@ -70,12 +68,14 @@ export default function KitBox({
    * ---------------- 处理 props (可优化) ----------------
    */
   // 左右的设定会干扰到居中，故x轴居中时左右设定无效
-  if (alignCenter) left = right = undefined
+  left = alignCenter ? undefined : left
+  right = alignCenter ? undefined : right
   // 上下的设定会干扰到居中，故y轴居中时上下设定无效
-  if (alignMiddle) top = bottom = undefined
-
+  top = alignMiddle ? undefined : top
+  bottom = alignMiddle ? undefined : bottom
   // 决定在什么时候启用 skeleton
-  skeleton = !debugMode && hideSkeleton ? {} : skeleton || thisKitSkeleton || {}
+  skeleton = !debugMode && noSkeleton ? {} : skeleton  || {}
+  console.log('skeleton: ', skeleton)
   // 设定的size与默认的合并
   size = merge(merge([width, height], size), Array.of(skeleton.size).flat())
   // Kit 不应该有默认 location，会增加复杂度的
@@ -88,7 +88,7 @@ export default function KitBox({
    */
   // <Box> 的核心包裹器，默认状态是无法（逻辑上也不能）y轴居中的
   const content = (
-    <View
+    <Native_View
       style={{
         flex: (typeof flex === 'number' && flex) || (flex && 1),
         width: size[0],
@@ -116,18 +116,17 @@ export default function KitBox({
         elevation,
         opacity,
         overflow: (noClipping && 'visible') || (clipping && 'hidden'),
-        ...rootStyle_view
+        ...style
       }}
-      {...rootProps_view}
       {...otherProps}
     >
       {children}
-    </View>
+    </Native_View>
   )
   //如果是绝对定位，需要再包一层外壳以启用y轴居中
   if (absolute) {
     return (
-      <View
+      <Native_View
         style={{
           position: 'absolute',
           zIndex: 1,
@@ -135,12 +134,14 @@ export default function KitBox({
           left: 0,
           right: 0,
           bottom: 0,
-          justifyContent: alignMiddle && 'center'
+          justifyContent:
+            (alignMiddle && 'center') ||
+            (alignLeft && 'flex-start') ||
+            (alignRight && 'flex-end')
         }}
-        {...rootProps_view}
       >
         {content}
-      </View>
+      </Native_View>
     )
   } else {
     return content

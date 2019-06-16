@@ -4,22 +4,25 @@ import Kit_Text from './Text'
 import Kit_Card from './Card' // proto
 
 const skeleton = {
+  size: [120, 60],
   boxColor: 'hsl(0, 0%, 90%)'
 }
-const iconSkeleton = {
-  size: 24,
+const imageSkeleton = {
+  size: ['100%'],
   boxColor: 'hsl(0, 0%, 80%)'
 }
 
 export default function Kit_ImageCard({
   direction = 'column', //规定内部元素的排布方向
   source, // Image 的快捷方式内容
-  dia=48, // Icon的直径; Image 的快捷方式内容
   label, // Label 的快捷方式字符串内容
+  ratio,
   debugMode,
+  width,
+  height,
 
   // 完全传递给 <Icon>
-  Icon,
+  Image,
   // 完全传递给 <Text>
   Label,
 
@@ -29,30 +32,29 @@ export default function Kit_ImageCard({
 }) {
   return (
     <Kit_Card
-      round={skeleton.round}
       skeleton={skeleton}
-      debugMode={debugMode}
-      round={10000}
+      width={width}
+      height={height}
       style={{
         flexDirection: direction,
-        aspectRatio:1, // Icon 的skeleton 会是一个自适应的原型
         ...style
       }}
       {...proto}
     >
       <Kit_Image
-        circle={!source}
+        ratio={ratio}
+        width={width}
+        height={!label && !Label ? height : undefined}
+        skeleton={imageSkeleton}
         debugMode={debugMode}
         source={source}
-        size={dia}
-        skeleton={iconSkeleton}
-        {...Icon}
+        {...Image}
       />
       {(label || Label) && (
         <Kit_Text
           width="auto" // 开发此 Kit 时需要
           color={'white'}
-          fontSize={12}
+          fontSize={24}
           debugMode={debugMode}
           text={label}
           {...Label}

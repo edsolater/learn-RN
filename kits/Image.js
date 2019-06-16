@@ -1,83 +1,62 @@
 import React from 'react'
-import { TouchableOpacity, Image, TouchableHighlight } from 'react-native'
-import Box from './Box'
-import { GlobalStyle } from '../constants'
+import { Image as Native_Image } from 'react-native'
+import Kit_Box from './Box'
 
-/**
- * ---------------- 组件的可自定义配置 ----------------
- */
-const thisKitSkeleton = GlobalStyle.skeleton.Image
-const touchEffects = {
-  opacity: TouchableOpacity,
-  highlight: TouchableHighlight
+const skeleton = {
+  size: [200, 100],
+  boxColor: 'hsl(0, 0%, 70%)'
 }
 
 export default function KitImage({
   source,
-
-  // 按钮反馈
-  onPress,
-  effectType = 'opacity',
-  rootStyle_touchable,
-  rootProps_touchable,
+  mode, // 定义图像相对占位图框的内部位置模式
 
   // Image
-  mode, // 定义图像相对占位图框的内部位置模式
+  ratio, // 仅在width、height或size没有设置时生效
   size,
   width,
   height,
-  style,
-  rootStyle_image = style,
-  rootProps_image,
+
+  style_image,
+  proto_image,
 
   // Box
-  round, // 权重在 circle之下
   circle,
-  rootStyle_Box, // 为了有代码提示功能
-  rootProps_Box, // 为了有代码提示功能
-  ...otherProps
+  ...proto
 }) {
   /**
    * ---------------- 处理 props (可优化) ----------------
    */
-  // 处理尺寸信息,不用给 Box 看，给 image 看
+  // 处理尺寸信息，image 指定尺寸需要额外的规则
   size = Array.of(size).flat()
   width = width || size[0]
   height = height || size[1] || size[0]
+  // 使用 ratio
+  ratio = !width || !height ? ratio : undefined
 
-  /**
-   * ---------------- 返回组件 ----------------
-   */
-  const ImageTouchEffect = touchEffects[effectType]
   return (
-    <ImageTouchEffect
-      onPress={onPress}
-      style={rootStyle_touchable}
-      {...rootProps_touchable}
+    <Kit_Box
+      noSkeleton={source}
+      width={width}
+      height={height}
+      round={circle && 10000}
+      clipping
+      skeleton={skeleton}
+      {...proto}
     >
-      <Box
-        width={width}
-        height={height}
-        size={size[0]} // 需要再把 size 拆开来
-        round={(circle && 10000) || round}
-        hideSkeleton={source}
-        clipping
-        skeleton={thisKitSkeleton}
-        rootStyle_view={rootStyle_Box}
-        rootProps_view={rootProps_Box}
-        {...otherProps}
-      >
-        <Image
-          source={source}
-          style={{
-            ...(width ? { width: width } : {}),
-            ...(height ? { height: height } : {}),
-            resizeMode: mode,
-            ...rootStyle_image
-          }}
-          {...rootProps_image}
-        />
-      </Box>
-    </ImageTouchEffect>
+      <Native_Image
+        source={source}
+        style={{
+          width, // undefined 就是值为画框的宽度为0
+          height,
+          // ...(width ? { width: width } : {}),
+          // ...(height ? { height: height } : {}),
+          aspectRatio: ratio,
+          resizeMode: mode,
+          ...style_image
+        }}
+        {...proto_image}
+      />
+    </Kit_Box>
   )
 }

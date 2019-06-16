@@ -1,9 +1,10 @@
 import React from 'react'
-import Box from './Box'
-import { GlobalStyle } from '../constants'
+import Kit_Box from './Box'
 
-const thisKitSkeleton = GlobalStyle.skeleton.Board
+const skeleton = {
+  boxColor: 'hsl(0, 100%, 100%)'
+}
 
-export default function KitBoard({ ...otherProps }) {
-  return <Box noBoxcolor skeleton={thisKitSkeleton} {...otherProps} />
+export default function KitBoard({ ...Box }) {
+  return <Kit_Box noBoxcolor skeleton={skeleton} {...Box} />
 }

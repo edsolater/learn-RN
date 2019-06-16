@@ -1,5 +1,5 @@
 import React from 'react'
-import { Icon, Board, Avatar, Text, Button, Image } from '../../kits'
+import { Icon, Board, Text, Button, Image, Card, ImageCard } from '../../kits'
 
 const images = [
   {
@@ -47,14 +47,21 @@ export default function This({ navigation }) {
           mode="stretch"
         />
       ))}
-      <Image />
-      <Icon boxColor="red" />
-      <Avatar />
-      <Button
-        IconProps={{ right: 4 }}
-        debugMode
-        text="hello"
+      <Image
+        width='100%'
+        ratio={3}
+        source={require('../../assets/images/默认头像.png')}
       />
+      <Icon boxColor="red" label="hehe" />
+      <Button Icon={{}} label="hello" />
+      <ImageCard
+        height={80}
+        ratio={2}
+        noSkeleton
+        source={require('../../assets/images/默认头像.png')}
+        debugMode
+      />
+      <Card />
     </Board>
   )
 }

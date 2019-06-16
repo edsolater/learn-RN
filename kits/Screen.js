@@ -2,9 +2,7 @@ import React from 'react'
 import { ScrollView, View, StatusBar } from 'react-native'
 import { GlobalStyle } from '../constants'
 
-/**
- * ---------------- 组件的可自定义配置 ----------------
- */
+
 const thisKitSkeleton = GlobalStyle.skeleton.Screen
 
 export default function KitScreen({

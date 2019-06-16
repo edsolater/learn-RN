@@ -1,62 +1,47 @@
 import React from 'react'
-import { Text } from 'react-native'
-import Box from './Box'
-import { GlobalStyle } from '../constants'
+import { Text as React_Text } from 'react-native'
+import Kit_Box from './Box'
 
-/**
- * ---------------- 组件的可自定义配置 ----------------
- */
 const defaultStyle = {
-  fontSize: (type = 'main') => GlobalStyle.fontSize[type] || 14,
-  fontColor: GlobalStyle.font.main.fontColor
+  fontSize: 14,
+  color: 'hsla(238, 21%, 10%, 0.78)'
 }
-const thisKitSkeleton = GlobalStyle.skeleton.Text
+const skeleton = {
+  size: [112, undefined], // 空值不能改变 length，要显示地设定 undefined
+  boxColor: 'hsla(150, 100%, 50%, 0.78)'
+}
 
-export default function KitText({
+export default function Kit_Text({
+  // 此组件专有参数、快捷参数
   text,
+  type = 'main', // 并未依此做出自定义选项
+  color,
+  fontSize,
 
   // text 字体相关设定
-  fontColor,
-  fontSize,
-  fontType, // 实际上规定了 fontSize
-  style,
-  rootStyle_Text = style,
-  rootProps_text,
+  style_text,
+  proto_text,
 
   // Box 相关设定
-  width,
-  wordNum, // 实际上与 fontSize 联合规定了 width
-  rootStyle_Box,
-  rootProps_Box,
-  ...otherProps
+  ...proto
 }) {
-  /**
-   * ---------------- 返回组件 ----------------
-   */
   return (
-    <Box
-      width={
-        width ||
-        (wordNum && wordNum * (fontSize || defaultStyle.fontSize(fontType))) ||
-        (thisKitSkeleton && thisKitSkeleton.size && thisKitSkeleton.size[0])
-      }
-      hideSkeleton={text}
-      skeleton={thisKitSkeleton}
-      rootStyle_view={rootStyle_Box}
-      rootProps_view={rootProps_Box}
-      {...otherProps}
+    <Kit_Box
+      noSkeleton={text}
+      skeleton={skeleton}
+      {...proto}
     >
-      <Text
+      <React_Text
         style={{
-          fontSize: fontSize || defaultStyle.fontSize(fontType),
-          color: fontColor || defaultStyle.fontColor,
+          fontSize: fontSize || defaultStyle.fontSize,
+          color: color || defaultStyle.color,
           textAlign: 'center', // 文字永远居中与文本框
-          ...rootStyle_Text
+          ...style_text
         }}
-        {...rootProps_text}
+        {...proto_text}
       >
         {text}
-      </Text>
-    </Box>
+      </React_Text>
+    </Kit_Box>
   )
 }
